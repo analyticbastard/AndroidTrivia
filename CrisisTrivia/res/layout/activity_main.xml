@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/buttonResume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="39dp"
+        android:text="@string/resume_last_game"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white" />
+
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonResume"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/start_new_game"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/rank"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
+
+</RelativeLayout>

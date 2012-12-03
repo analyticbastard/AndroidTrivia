@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Crisis Trivia</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main_panel"></string>
+    <string name="question">Question\nOne\nTwo</string>
+    <string name="resume_last_game">Resume Last Game</string>
+    <string name="rank">Rank</string>
+    <string name="answer1">Answer1\n\n</string>
+    <string name="answer2">Answer2\n\n</string>
+    <string name="answer3">Answer3\n\n</string>
+    <string name="title_activity_transition">TransitionActivity</string>
+    <string name="start_new_game">Start New Game</string>
+
+</resources>
