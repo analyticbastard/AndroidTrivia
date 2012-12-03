@@ -12,6 +12,9 @@ import android.widget.Button;
 public class MainActivity extends Activity implements OnClickListener {
 	public static final int ACTIVITY_QUESTION = 1;
 	public static final int ACTIVITY_TRANSITION = 2;
+	public static final int ACTIVITY_LEVEL2 = 11;
+	public static final int ACTIVITY_LEVEL3 = 12;
+	public static final int ACTIVITY_LEVEL_FLASH = 13;
 	
 	private void startActivityQuestion() {
 		Intent intent = new Intent();
@@ -31,6 +34,16 @@ public class MainActivity extends Activity implements OnClickListener {
 				"com.zeda.crisistrivia.TransitionActivity";
 		intent.setClassName(packageName, className);
 		startActivityForResult(intent, ACTIVITY_TRANSITION);
+	}
+	
+	public void startLevelActivity() {
+		Intent intent = new Intent();
+		String packageName =
+				"com.zeda.crisistrivia";
+		String className =
+				"com.zeda.crisistrivia.LevelActivity";
+		intent.setClassName(packageName, className);
+		startActivityForResult(intent, ACTIVITY_LEVEL2);
 	}
 
 	@Override
@@ -61,16 +74,22 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == ACTIVITY_QUESTION) {
-			Log.i("MainActivity", "requestCode == ACTIVITY_QUESTION");
+			//Log.i("MainActivity", "requestCode == ACTIVITY_QUESTION");
 			startActivityTransition();
 		} else if (requestCode == ACTIVITY_TRANSITION) {
 			if (GameManager.getManager().getQuestionsAnswered() <
 					GameManager.QUESTIONS_IN_GAME) {
-				Log.i("MainActivity", "requestCode == ACTIVITY_TRANSITION");
-				startActivityQuestion();
-			} else {
-				// Game over
+				if (GameManager.getManager().getQuestionsAnswered() ==
+						GameManager.QUESTIONS_LEVEL1) {
+					startLevelActivity();
+				} else {
+					startActivityQuestion();
+				}
 			}
+		} else if (requestCode == ACTIVITY_LEVEL2) {
+			startActivityQuestion();
+		} else {
+			// Game over
 		}
 	}
 

@@ -30,26 +30,29 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int wrong=0x7f020005;
     }
     public static final class id {
-        public static final int answerButton1=0x7f080009;
-        public static final int answerButton2=0x7f08000a;
-        public static final int answerButton3=0x7f08000b;
-        public static final int answersLayout=0x7f080008;
-        public static final int buttonResume=0x7f080000;
-        public static final int buttonStart=0x7f080001;
-        public static final int floatingMark=0x7f080005;
-        public static final int logo=0x7f080003;
-        public static final int menu_settings=0x7f08000e;
-        public static final int pointsUpdate=0x7f08000d;
-        public static final int progressBar1=0x7f080006;
-        public static final int questionText=0x7f080007;
-        public static final int questions_frame=0x7f080004;
-        public static final int textView1=0x7f080002;
-        public static final int transitionFrame=0x7f08000c;
+        public static final int answerButton1=0x7f08000b;
+        public static final int answerButton2=0x7f08000c;
+        public static final int answerButton3=0x7f08000d;
+        public static final int answersLayout=0x7f08000a;
+        public static final int buttonResume=0x7f080002;
+        public static final int buttonStart=0x7f080003;
+        public static final int floatingMark=0x7f080007;
+        public static final int levelLayout=0x7f080000;
+        public static final int levelTextView=0x7f080001;
+        public static final int logo=0x7f080005;
+        public static final int menu_settings=0x7f080010;
+        public static final int pointsUpdate=0x7f08000f;
+        public static final int progressBar1=0x7f080008;
+        public static final int questionText=0x7f080009;
+        public static final int questions_frame=0x7f080006;
+        public static final int textView1=0x7f080004;
+        public static final int transitionFrame=0x7f08000e;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_questions=0x7f030001;
-        public static final int activity_transition=0x7f030002;
+        public static final int activity_level=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_questions=0x7f030002;
+        public static final int activity_transition=0x7f030003;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;
@@ -61,11 +64,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int answer2=0x7f050007;
         public static final int answer3=0x7f050008;
         public static final int app_name=0x7f050000;
+        public static final int dummy_button=0x7f05000c;
+        public static final int dummy_content=0x7f05000b;
         public static final int menu_settings=0x7f050001;
         public static final int question=0x7f050003;
         public static final int rank=0x7f050005;
         public static final int resume_last_game=0x7f050004;
         public static final int start_new_game=0x7f05000a;
+        public static final int title_activity_level=0x7f05000d;
         public static final int title_activity_main_panel=0x7f050002;
         public static final int title_activity_transition=0x7f050009;
     }

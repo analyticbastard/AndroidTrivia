@@ -8,6 +8,8 @@ public class GameManager {
 	public static final int MULTIPLIER = 50;
 	
 	public static final int QUESTIONS_IN_GAME = 6;
+	public static final int QUESTIONS_LEVEL1 = 3;
+	public static final int QUESTIONS_LEVEL2 = 3;
 	
 	public static final int QUESTION_TIME = 15;
 	
@@ -26,8 +28,8 @@ public class GameManager {
 	}
 
 	private GameManager() {
-		int n1=3, n2=3;
-		questions = QuestionDataSource.getSource().getQuestions(n1, n2);		
+		questions = QuestionDataSource.getSource().getQuestions(QUESTIONS_LEVEL1,
+				QUESTIONS_LEVEL2);		
 	}
 	
 	public static GameManager getManager() {
