@@ -40,6 +40,12 @@
             android:label="@string/title_activity_level"
             android:theme="@style/FullscreenTheme" >
         </activity>
+        <activity
+            android:name="com.zeda.crisistrivia.GameOverActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_game_over"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
     </application>
 
 </manifest>

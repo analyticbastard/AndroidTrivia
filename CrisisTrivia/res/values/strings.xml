@@ -15,5 +15,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="title_activity_level">LevelActivity</string>
+    <string name="title_activity_game_over">GameOverActivity</string>
+    <string name="game_over">Game Over</string>
 
 </resources>
