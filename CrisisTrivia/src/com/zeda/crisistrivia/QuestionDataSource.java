@@ -39,6 +39,7 @@ public class QuestionDataSource {
 	
 	public static final String  TABLE_LEVEL1 = "level1";
 	public static final String  TABLE_LEVEL2 = "level2";
+	public static final String  TABLE_LEVEL3 = "level3";
 
 	public static final String COLUMN_ID = "rowid";
 	public static final String COLUMN_DIFFICULTY = "Difficulty";
@@ -47,6 +48,10 @@ public class QuestionDataSource {
 	public static final String COLUMN_ANSWER1 = "Answer1";
 	public static final String COLUMN_ANSWER2 = "Answer2";
 	public static final String COLUMN_ANSWER3 = "Answer3";
+	
+	public static final int MAX_QUESTIONS_LEVEL1 = 50;
+	public static final int MAX_QUESTIONS_LEVEL2 = 30;
+	public static final int MAX_QUESTIONS_LEVEL3 = 10;
 
 	private static QuestionDataSource source;
 
@@ -98,12 +103,12 @@ public class QuestionDataSource {
 			 */
 //			if (!checkDatabase(context, name)) {
 				// if not exists, I try to copy from asset dir
-				try {
-					copyDataBase(context, name);
-				} catch (IOException e) {
-					Log.e(TAG, "Database " + name
-							+ " does not exists and there is no Original Version in Asset dir");
-				}
+			try {
+				copyDataBase(context, name);
+			} catch (IOException e) {
+				Log.e(TAG, "Database " + name
+						+ " does not exists and there is no Original Version in Asset dir");
+			}
 //			}
 			
 			sqliteDb = this.getReadableDatabase();
@@ -281,48 +286,81 @@ public class QuestionDataSource {
 	}
 
 
-	public Vector<Question> getQuestions(int n1, int n2) {
-		Vector<Question> questions1 = new Vector<Question>(n1);
-		
-		Vector<Long> seq = generateRandomSequence(7, n1);
+//	public Vector<Question> getQuestions(int n1, int n2) {
+//		Vector<Question> questions1 = new Vector<Question>(n1);
+//		
+//		Vector<Long> seq = generateRandomSequence(7, n1);
+//
+//		Cursor cursor = dbHelper.getDatabase().query(TABLE_LEVEL1,
+//				allColumns, null, null, null, null, null);
+//
+//		cursor.moveToFirst();
+//		while (!cursor.isAfterLast()) {
+//			Question q = cursorToQuestion(cursor);
+//			if (seq.contains(new Long(cursor.getLong(0))))
+//				questions1.add(q);
+//			cursor.moveToNext();
+//		}
+//		// Make sure to close the cursor
+//		cursor.close();
+//		Collections.shuffle(questions1);
+//		
+//		Vector<Question> questions2 = new Vector<Question>(n2);
+//		
+//		seq = generateRandomSequence(5, n2);
+//
+//		cursor = dbHelper.getDatabase().query(TABLE_LEVEL2,
+//				allColumns, null, null, null, null, null);
+//
+//		cursor.moveToFirst();
+//		while (!cursor.isAfterLast()) {
+//			Question q = cursorToQuestion(cursor);
+//			Log.i("xxx", "" + cursor.getLong(0));
+//			if (seq.contains(new Long(cursor.getLong(0))))
+//				questions2.add(q);
+//			cursor.moveToNext();
+//		}
+//		// Make sure to close the cursor
+//		cursor.close();
+//		Collections.shuffle(questions2);
+//		
+//		
+//		questions1.addAll(questions2);
+//		
+//		return questions1;
+//	}
+	
+	public Vector<Question> getQuestionsLevel1(int n) {
+		return getQuestionsLevel(n, MAX_QUESTIONS_LEVEL1, TABLE_LEVEL1);
+	}
+	
+	public Vector<Question> getQuestionsLevel2(int n) {
+		return getQuestionsLevel(n, MAX_QUESTIONS_LEVEL2, TABLE_LEVEL2);
+	}
+	
+	public Vector<Question> getQuestionsLevel3(int n) {
+		return getQuestionsLevel(n, MAX_QUESTIONS_LEVEL3, TABLE_LEVEL3);
+	}
+	
+	public Vector<Question> getQuestionsLevel(int n, int maxQuestions, 
+			String tableLevel) {
+		Vector<Question> questions = new Vector<Question>(n);
+		Vector<Long> seq = generateRandomSequence(maxQuestions, n);
 
-		Cursor cursor = dbHelper.getDatabase().query(TABLE_LEVEL1,
+		Cursor cursor = dbHelper.getDatabase().query(tableLevel,
 				allColumns, null, null, null, null, null);
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Question q = cursorToQuestion(cursor);
 			if (seq.contains(new Long(cursor.getLong(0))))
-				questions1.add(q);
+				questions.add(q);
 			cursor.moveToNext();
 		}
-		// Make sure to close the cursor
+		
 		cursor.close();
-		Collections.shuffle(questions1);
-		
-		Vector<Question> questions2 = new Vector<Question>(n2);
-		
-		seq = generateRandomSequence(5, n2);
 
-		cursor = dbHelper.getDatabase().query(TABLE_LEVEL2,
-				allColumns, null, null, null, null, null);
-
-		cursor.moveToFirst();
-		while (!cursor.isAfterLast()) {
-			Question q = cursorToQuestion(cursor);
-			Log.i("xxx", "" + cursor.getLong(0));
-			if (seq.contains(new Long(cursor.getLong(0))))
-				questions2.add(q);
-			cursor.moveToNext();
-		}
-		// Make sure to close the cursor
-		cursor.close();
-		Collections.shuffle(questions2);
-		
-		
-		questions1.addAll(questions2);
-		
-		return questions1;
+		return questions;
 	}
 
 	private Question cursorToQuestion(Cursor cursor) {

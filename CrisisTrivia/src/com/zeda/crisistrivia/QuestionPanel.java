@@ -70,6 +70,8 @@ public class QuestionPanel extends Activity {
 			iv.setLayoutParams(lp);
 			iv.bringToFront();
 			iv.setVisibility(ImageView.VISIBLE);
+			
+			GameManager.getManager().advanceQuestionsAnswered();
 		}
 	}
 	
@@ -81,10 +83,11 @@ public class QuestionPanel extends Activity {
 		
 		@Override
 		public void onClick(View arg0) {
+			GameManager.getManager().addPoints();
 			super.onClick(arg0);
 			
-			GameManager.getManager().addPoints(
-					questionpanel.getQuestion().getDifficulty());
+//			GameManager.getManager().addPoints(
+//					questionpanel.getQuestion().getDifficulty());
 			
 			questionpanel.finish();
 		}
@@ -129,6 +132,8 @@ public class QuestionPanel extends Activity {
 			} else {
 				timer.cancel();
 				timer.purge();
+
+				GameManager.getManager().advanceQuestionsAnswered();
 				
 				// Finish activity
 				qp.finish();
@@ -187,9 +192,6 @@ public class QuestionPanel extends Activity {
 		// Start timer here to timeout and to update progress bar
 		CustomTimerTask ct = new CustomTimerTask(timer, this);
 		timer.schedule(ct, 0, 500);
-		
-		GameManager.getManager().setQuestionsAnswered(
-				GameManager.getManager().getQuestionsAnswered() + 1);
 	}
 	
 	public void onDestroy() {

@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 
 public class LevelActivity extends Activity implements View.OnClickListener {
@@ -19,6 +20,11 @@ public class LevelActivity extends Activity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_level);
+		
+		if (GameManager.getManager().getLevel() == GameManager.LEVEL3) {
+			TextView tv = (TextView) findViewById(R.id.levelTextView);
+			tv.setText(this.getString(R.string.level_3));
+		}			
 
 		FrameLayout fl = (FrameLayout) findViewById(R.id.levelLayout);
 		fl.setOnClickListener(this);

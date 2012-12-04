@@ -1,23 +1,39 @@
 package com.zeda.crisistrivia;
 
+import java.util.Collections;
 import java.util.Vector;
+
+import android.util.Log;
 
 public class GameManager {
 	private static GameManager manager = null;
 	
 	public static final int MULTIPLIER = 50;
 	
-	public static final int QUESTIONS_IN_GAME = 6;
+	public static final int QUESTIONS_IN_GAME = 8;
+	
 	public static final int QUESTIONS_LEVEL1 = 3;
 	public static final int QUESTIONS_LEVEL2 = 3;
+	public static final int QUESTIONS_LEVEL3 = 2;
+	
+	public static final int FAIL_QUESTIONS_LEVEL = 2;
+	public static final int FAIL_QUESTIONS_FLASH = 1;
+	
+	public static final int LEVEL1 = 1;
+	public static final int LEVEL2 = 2;
+	public static final int LEVEL3 = 3;
+	public static final int LEVEL_FLASH = 9999;
 	
 	public static final int QUESTION_TIME = 15;
 	
-	Vector<Question> questions;
+	
+	private Vector<Question> questions;
 	
 	private int totalPoints = 0;
 	
 	private int questionsAnswered = 0;
+	private int questionsOK = 0;
+	private int questionsLevelOK = 0;
 	
 	public int getTotalPoints() {
 		return totalPoints;
@@ -28,8 +44,7 @@ public class GameManager {
 	}
 
 	private GameManager() {
-		questions = QuestionDataSource.getSource().getQuestions(QUESTIONS_LEVEL1,
-				QUESTIONS_LEVEL2);		
+		getQuestionFromSource();
 	}
 	
 	public static GameManager getManager() {
@@ -40,44 +55,115 @@ public class GameManager {
 		return manager;
 	}
 	
+	public void getQuestionFromSource() {
+//		questions = QuestionDataSource.getSource().getQuestions(QUESTIONS_LEVEL1,
+//				QUESTIONS_LEVEL2);
+		Vector<Question> questions1 = 
+				QuestionDataSource.getSource().getQuestionsLevel1(
+						QUESTIONS_LEVEL1);
+		Vector<Question> questions2 =
+				QuestionDataSource.getSource().getQuestionsLevel2(
+						QUESTIONS_LEVEL2);
+		Vector<Question> questions3 =
+				QuestionDataSource.getSource().getQuestionsLevel3(
+						QUESTIONS_LEVEL3);
+		
+		Collections.shuffle(questions1);
+		Collections.shuffle(questions2);
+		Collections.shuffle(questions3);
+		
+		questions = new Vector<Question>();
+		
+		questions.addAll(questions1);
+		questions.addAll(questions2);
+		questions.addAll(questions3);
+	}
+	
 	public Question getQuestion() {
-//		String st = "Who is Bernanke?";
-//		String imag = "bernanke1";
-//		
-//		Vector<String> a = new Vector<String>(3);
-//		a.add("President of the Federal Reserve");
-//		a.add("President of the ECB");
-//		a.add("Secretary of the Treasury");
-//		
-//		int ok = 1;
-//
-//		String truth = a.get(0);
-//		
-//		Collections.shuffle(a);
-//		for (int i=0; i<3; i++) {
-//			if (a.get(i).equals(truth))
-//				ok = i + 1;
-//		}
-//		
-//		Question q = new Question(10, st, imag, a.get(0), a.get(1), a.get(2), ok);
 		Question q = questions.get(getQuestionsAnswered());
 		return q;
 	}
 	
-	public void addPoints(int points) {
-		setTotalPoints(getTotalPoints() + points * MULTIPLIER);
+	public void addPoints() {
+		//setTotalPoints(getTotalPoints() + points * MULTIPLIER);
+		setTotalPoints(getTotalPoints() 
+				+ questions.get(getQuestionsAnswered()).getDifficulty()
+				* MULTIPLIER);
+		questionsOK++;
+		questionsLevelOK++;
 	}
 
 	public int getQuestionsAnswered() {
 		return questionsAnswered;
 	}
 
-	public void setQuestionsAnswered(int questionsAnswered) {
-		this.questionsAnswered = questionsAnswered;
+	public void advanceQuestionsAnswered() {
+		this.questionsAnswered++;
+		
+		if (getPreLevel() == LEVEL2 & (getQuestionsAnswered() == QUESTIONS_LEVEL1 + 1))
+			questionsLevelOK = 0;
+		if (getPreLevel() == LEVEL3 & (getQuestionsAnswered() == QUESTIONS_LEVEL1
+				+ QUESTIONS_LEVEL2 + 1))
+			questionsLevelOK = 0;
+		if (getPreLevel() == LEVEL_FLASH & (getQuestionsAnswered() == QUESTIONS_LEVEL1
+				+ QUESTIONS_LEVEL2 + QUESTIONS_LEVEL3 + 1))
+			questionsLevelOK = 0;
 	}
 	
 	public void resetGame() {
-		setQuestionsAnswered(0);
+		questionsAnswered = 0;
 		setTotalPoints(0);
+		questionsOK = 0;
+		questionsLevelOK = 0;
+		
+		getQuestionFromSource();
+	}
+	
+	public int getLevel() {
+		if (getQuestionsAnswered() < QUESTIONS_LEVEL1) {
+			return LEVEL1;
+		} else if (getQuestionsAnswered() < QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2) {
+			return LEVEL2;
+		} else if (getQuestionsAnswered() < QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
+				+ QUESTIONS_LEVEL3) {
+			return LEVEL3;
+		} else {
+			return LEVEL_FLASH;
+		}
+	}
+
+
+	public int getPreLevel() {
+		if (getQuestionsAnswered() <= QUESTIONS_LEVEL1) {
+			return LEVEL1;
+		} else if (getQuestionsAnswered() <= QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2) {
+			return LEVEL2;
+		} else if (getQuestionsAnswered() <= QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
+				+ QUESTIONS_LEVEL3) {
+			return LEVEL3;
+		} else {
+			return LEVEL_FLASH;
+		}
+	}
+
+	public boolean isFailed() {
+		boolean ok = false;
+		
+		if (getPreLevel()==LEVEL1) 
+			ok = (getQuestionsAnswered() 
+					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
+		else if (getPreLevel()==LEVEL2)
+			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1 
+					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
+		else if (getPreLevel()==LEVEL3)
+			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2 
+					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
+		else if (getPreLevel()==LEVEL_FLASH) {
+			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2
+					- QUESTIONS_LEVEL3 - questionsLevelOK) 
+					< FAIL_QUESTIONS_FLASH;
+		}
+		
+		return !ok;
 	}
 }

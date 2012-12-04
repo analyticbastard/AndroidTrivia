@@ -9,9 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 
 
-public class GameOverActivity extends Activity {
+public class GameOverActivity extends Activity implements View.OnClickListener {
 
 
 	@Override
@@ -20,5 +21,12 @@ public class GameOverActivity extends Activity {
 
 		setContentView(R.layout.activity_game_over);
 		
+		FrameLayout fl = (FrameLayout) findViewById(R.id.gameOverLayout);		
+		fl.setOnClickListener(this);		
+	}
+
+	@Override
+	public void onClick(View v) {
+		finish();
 	}
 }

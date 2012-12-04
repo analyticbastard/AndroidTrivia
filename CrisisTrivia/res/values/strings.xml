@@ -17,5 +17,7 @@
     <string name="title_activity_level">LevelActivity</string>
     <string name="title_activity_game_over">GameOverActivity</string>
     <string name="game_over">Game Over</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
 
 </resources>
