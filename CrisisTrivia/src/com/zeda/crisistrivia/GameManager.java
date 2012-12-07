@@ -3,7 +3,6 @@ package com.zeda.crisistrivia;
 import java.util.Collections;
 import java.util.Vector;
 
-import android.util.Log;
 
 public class GameManager {
 	private static GameManager manager = null;
@@ -85,10 +84,10 @@ public class GameManager {
 	}
 	
 	public void addPoints() {
-		//setTotalPoints(getTotalPoints() + points * MULTIPLIER);
 		setTotalPoints(getTotalPoints() 
-				+ questions.get(getQuestionsAnswered()).getDifficulty()
+				+ questions.get(getQuestionsAnswered() - 1).getDifficulty()
 				* MULTIPLIER);
+		
 		questionsOK++;
 		questionsLevelOK++;
 	}
@@ -100,12 +99,12 @@ public class GameManager {
 	public void advanceQuestionsAnswered() {
 		this.questionsAnswered++;
 		
-		if (getPreLevel() == LEVEL2 & (getQuestionsAnswered() == QUESTIONS_LEVEL1 + 1))
+		if (getLevel() == LEVEL2 & (getQuestionsAnswered() == QUESTIONS_LEVEL1 + 1))
 			questionsLevelOK = 0;
-		if (getPreLevel() == LEVEL3 & (getQuestionsAnswered() == QUESTIONS_LEVEL1
+		if (getLevel() == LEVEL3 & (getQuestionsAnswered() == QUESTIONS_LEVEL1
 				+ QUESTIONS_LEVEL2 + 1))
 			questionsLevelOK = 0;
-		if (getPreLevel() == LEVEL_FLASH & (getQuestionsAnswered() == QUESTIONS_LEVEL1
+		if (getLevel() == LEVEL_FLASH & (getQuestionsAnswered() == QUESTIONS_LEVEL1
 				+ QUESTIONS_LEVEL2 + QUESTIONS_LEVEL3 + 1))
 			questionsLevelOK = 0;
 	}
@@ -132,33 +131,21 @@ public class GameManager {
 		}
 	}
 
-
-	public int getPreLevel() {
-		if (getQuestionsAnswered() <= QUESTIONS_LEVEL1) {
-			return LEVEL1;
-		} else if (getQuestionsAnswered() <= QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2) {
-			return LEVEL2;
-		} else if (getQuestionsAnswered() <= QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
-				+ QUESTIONS_LEVEL3) {
-			return LEVEL3;
-		} else {
-			return LEVEL_FLASH;
-		}
-	}
-
 	public boolean isFailed() {
-		boolean ok = false;
+		boolean ok = true;
 		
-		if (getPreLevel()==LEVEL1) 
+		if (getQuestionsAnswered()==(QUESTIONS_LEVEL1)) 
 			ok = (getQuestionsAnswered() 
 					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
-		else if (getPreLevel()==LEVEL2)
+		else if (getQuestionsAnswered()==(QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2))
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1 
 					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
-		else if (getPreLevel()==LEVEL3)
+		else if (getQuestionsAnswered()==(QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
+				+ QUESTIONS_LEVEL3))
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2 
 					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
-		else if (getPreLevel()==LEVEL_FLASH) {
+		else if (getQuestionsAnswered()==(QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
+				+ QUESTIONS_LEVEL3 + FAIL_QUESTIONS_FLASH)) {
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2
 					- QUESTIONS_LEVEL3 - questionsLevelOK) 
 					< FAIL_QUESTIONS_FLASH;

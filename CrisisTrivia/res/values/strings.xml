@@ -19,5 +19,8 @@
     <string name="game_over">Game Over</string>
     <string name="level_2">Level 2</string>
     <string name="level_3">Level 3</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_finish">FinishActivity</string>
+    <string name="congratulations">Congratulations</string>
 
 </resources>

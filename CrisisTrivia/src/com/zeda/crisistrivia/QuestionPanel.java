@@ -83,12 +83,10 @@ public class QuestionPanel extends Activity {
 		
 		@Override
 		public void onClick(View arg0) {
-			GameManager.getManager().addPoints();
 			super.onClick(arg0);
 			
-//			GameManager.getManager().addPoints(
-//					questionpanel.getQuestion().getDifficulty());
-			
+			GameManager.getManager().addPoints();
+
 			questionpanel.finish();
 		}
 	}
