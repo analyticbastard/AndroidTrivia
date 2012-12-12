@@ -24,7 +24,12 @@ public class LevelActivity extends Activity implements View.OnClickListener {
 		if (GameManager.getManager().getLevel() == GameManager.LEVEL3) {
 			TextView tv = (TextView) findViewById(R.id.levelTextView);
 			tv.setText(this.getString(R.string.level_3));
-		}			
+		}
+		
+		if (GameManager.getManager().getLevel() == GameManager.LEVEL_FLASH) {
+			TextView tv = (TextView) findViewById(R.id.levelTextView);
+			tv.setText(this.getString(R.string.level_flash));
+		}
 
 		FrameLayout fl = (FrameLayout) findViewById(R.id.levelLayout);
 		fl.setOnClickListener(this);

@@ -9,13 +9,23 @@ public class GameManager {
 	
 	public static final int MULTIPLIER = 50;
 	
-	public static final int QUESTIONS_IN_GAME = 8;
-	
 	public static final int QUESTIONS_LEVEL1 = 3;
 	public static final int QUESTIONS_LEVEL2 = 3;
 	public static final int QUESTIONS_LEVEL3 = 2;
 	
-	public static final int FAIL_QUESTIONS_LEVEL = 2;
+	public static final int QUESTIONS_FLASH_LEVEL1 = 1;
+	public static final int QUESTIONS_FLASH_LEVEL2 = 1;
+	public static final int QUESTIONS_FLASH_LEVEL3 = 1;
+	
+	public static final int QUESTIONS_FLASH = QUESTIONS_FLASH_LEVEL1
+			+ QUESTIONS_FLASH_LEVEL2 + QUESTIONS_FLASH_LEVEL3;
+	
+	public static final int QUESTIONS_IN_GAME = QUESTIONS_LEVEL1
+			+ QUESTIONS_LEVEL2 + QUESTIONS_LEVEL3 + QUESTIONS_FLASH;
+	
+	public static final int FAIL_QUESTIONS_LEVEL1 = 2;
+	public static final int FAIL_QUESTIONS_LEVEL2 = 2;
+	public static final int FAIL_QUESTIONS_LEVEL3 = 2;
 	public static final int FAIL_QUESTIONS_FLASH = 1;
 	
 	public static final int LEVEL1 = 1;
@@ -59,23 +69,32 @@ public class GameManager {
 //				QUESTIONS_LEVEL2);
 		Vector<Question> questions1 = 
 				QuestionDataSource.getSource().getQuestionsLevel1(
-						QUESTIONS_LEVEL1);
+						QUESTIONS_LEVEL1 + QUESTIONS_FLASH_LEVEL1);
 		Vector<Question> questions2 =
 				QuestionDataSource.getSource().getQuestionsLevel2(
-						QUESTIONS_LEVEL2);
+						QUESTIONS_LEVEL2 + QUESTIONS_FLASH_LEVEL2);
 		Vector<Question> questions3 =
 				QuestionDataSource.getSource().getQuestionsLevel3(
-						QUESTIONS_LEVEL3);
+						QUESTIONS_LEVEL3 + QUESTIONS_FLASH_LEVEL3);
+		Vector<Question> questions_flash = new Vector<Question>();
 		
 		Collections.shuffle(questions1);
 		Collections.shuffle(questions2);
 		Collections.shuffle(questions3);
+		
+		for (int i=0; i<QUESTIONS_FLASH_LEVEL1; i++)
+			questions_flash.add(questions1.remove(0));
+		for (int i=0; i<QUESTIONS_FLASH_LEVEL2; i++)
+			questions_flash.add(questions2.remove(0));
+		for (int i=0; i<QUESTIONS_FLASH_LEVEL3; i++)
+		questions_flash.add(questions3.remove(0));
 		
 		questions = new Vector<Question>();
 		
 		questions.addAll(questions1);
 		questions.addAll(questions2);
 		questions.addAll(questions3);
+		questions.addAll(questions_flash);
 	}
 	
 	public Question getQuestion() {
@@ -134,18 +153,17 @@ public class GameManager {
 	public boolean isFailed() {
 		boolean ok = true;
 		
-		if (getQuestionsAnswered()==(QUESTIONS_LEVEL1)) 
+		if (getQuestionsAnswered() <= QUESTIONS_LEVEL1) 
 			ok = (getQuestionsAnswered() 
-					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
-		else if (getQuestionsAnswered()==(QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2))
+					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL1;
+		else if (getQuestionsAnswered() <= (QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2))
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1 
-					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
-		else if (getQuestionsAnswered()==(QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
+					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL2;
+		else if (getQuestionsAnswered() <= (QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
 				+ QUESTIONS_LEVEL3))
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2 
-					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL;
-		else if (getQuestionsAnswered()==(QUESTIONS_LEVEL1 + QUESTIONS_LEVEL2
-				+ QUESTIONS_LEVEL3 + FAIL_QUESTIONS_FLASH)) {
+					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL3;
+		else if (getQuestionsAnswered() <= QUESTIONS_IN_GAME) {
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2
 					- QUESTIONS_LEVEL3 - questionsLevelOK) 
 					< FAIL_QUESTIONS_FLASH;
@@ -153,4 +171,9 @@ public class GameManager {
 		
 		return !ok;
 	}
+	
+	public boolean isGameFinished() {
+		return getQuestionsAnswered() >= QUESTIONS_IN_GAME;
+	}
+	
 }

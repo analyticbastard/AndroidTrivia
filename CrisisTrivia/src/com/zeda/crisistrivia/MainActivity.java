@@ -135,21 +135,34 @@ public class MainActivity extends Activity implements OnClickListener {
 		if (requestCode == ACTIVITY_QUESTION) {
 			if (manager.isFailed())
 				startGameoverActivity();
+			else if (!manager.isGameFinished())
+				if (manager.getQuestionsAnswered() == 
+						GameManager.QUESTIONS_LEVEL1 + 
+						GameManager.QUESTIONS_LEVEL2 +
+						GameManager.QUESTIONS_LEVEL3)
+					startLevelActivity();
+				else if (manager.getLevel() == GameManager.LEVEL_FLASH)
+					startActivityQuestion();
+				else
+					startActivityTransition();
 			else
-				startActivityTransition();
+				startFinishActivity();
 		} else if (requestCode == ACTIVITY_TRANSITION) {
-			if (manager.getQuestionsAnswered() < GameManager.QUESTIONS_IN_GAME) {
+			if (!manager.isGameFinished()) {
 				if ((manager.getQuestionsAnswered() == GameManager.QUESTIONS_LEVEL1)
 						| (manager.getQuestionsAnswered() == 
 						GameManager.QUESTIONS_LEVEL1 + 
-						GameManager.QUESTIONS_LEVEL2)) {
+						GameManager.QUESTIONS_LEVEL2)
+						| (manager.getQuestionsAnswered() == 
+						GameManager.QUESTIONS_LEVEL1 + 
+						GameManager.QUESTIONS_LEVEL2 +
+						GameManager.QUESTIONS_LEVEL3)   ) {
 					startLevelActivity();
 				} else {
 					startActivityQuestion();
 				}
-			} else {
+			} else
 				startFinishActivity();
-			}
 		} else if (requestCode == ACTIVITY_LEVEL2) {
 			startActivityQuestion();
 		} else {
