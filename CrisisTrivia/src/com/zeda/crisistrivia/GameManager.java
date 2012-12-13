@@ -9,13 +9,13 @@ public class GameManager {
 	
 	public static final int MULTIPLIER = 50;
 	
-	public static final int QUESTIONS_LEVEL1 = 3;
-	public static final int QUESTIONS_LEVEL2 = 3;
-	public static final int QUESTIONS_LEVEL3 = 2;
+	public static final int QUESTIONS_LEVEL1 = 1;
+	public static final int QUESTIONS_LEVEL2 = 1;
+	public static final int QUESTIONS_LEVEL3 = 1;
 	
 	public static final int QUESTIONS_FLASH_LEVEL1 = 1;
-	public static final int QUESTIONS_FLASH_LEVEL2 = 1;
-	public static final int QUESTIONS_FLASH_LEVEL3 = 1;
+	public static final int QUESTIONS_FLASH_LEVEL2 = 0;
+	public static final int QUESTIONS_FLASH_LEVEL3 = 0;
 	
 	public static final int QUESTIONS_FLASH = QUESTIONS_FLASH_LEVEL1
 			+ QUESTIONS_FLASH_LEVEL2 + QUESTIONS_FLASH_LEVEL3;

@@ -7,7 +7,12 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="16" />
-
+    
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -47,5 +52,6 @@
             android:theme="@style/FullscreenTheme" >
         </activity>
     </application>
+
 
 </manifest>

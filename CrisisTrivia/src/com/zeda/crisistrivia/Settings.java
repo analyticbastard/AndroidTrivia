@@ -95,19 +95,62 @@ public class Settings {
 	    Account[] accounts =
 	    accountManager.getAccountsByType("com.google");
 
-	    name =accountManager.getUserData(accounts[0], 
-	    		AccountManager.KEY_ACCOUNT_NAME);
-	    
-	    if (name != null) {
-	    	userName = name;
+	    if (accounts.length > 0) {
+	    	name = accountManager.getUserData(accounts[0], 
+	    			AccountManager.KEY_ACCOUNT_NAME);
+
+	    	if (name != null) {
+	    		userName = name;
+	    	}
 	    }
 	}
 	
-	public void saveGame() {
+	public void saveRank() {
 		SharedPreferences settings = MainActivity.getInstance()
 				.getSharedPreferences(PREFS_NAME, 0);
+		
+		int points = GameManager.getManager().getTotalPoints();
+		
+		int points1 = gameRank.get(0).getPoints();
+		int points2 = gameRank.get(1).getPoints();
+		int points3 = gameRank.get(2).getPoints();
+		
+		String name1 = gameRank.get(0).getName();
+		String name2 = gameRank.get(1).getName();
+		String name3 = gameRank.get(2).getName();
+		
+		if (points > points1) {
+			points3 = points2;
+			points2 = points1;
+			points1 = points;
+			
+			name3 = name2;
+			name2 = name1;
+			name3 = userName;
+		} else if (points > points2) {
+			points3 = points2;
+			points2 = points;
+			
+			name3 = name2;
+			name2 = userName;
+		} else if (points > points2) {
+			points3 = points;
+			
+			name3 = userName;
+		}
+		
+		gameRank.get(0).setName(name1);
+		gameRank.get(1).setName(name2);
+		gameRank.get(2).setName(name3);
+		
+		gameRank.get(0).setPoints(points1);
+		gameRank.get(1).setPoints(points2);
+		gameRank.get(2).setPoints(points3);
 
 		Editor editor = settings.edit();
+		
+		editor.clear();
+		editor.commit();
 		
 		editor.putString(EDITOR_NAME1, gameRank.get(0).getName());
 		editor.putInt(EDITOR_POINTS1, gameRank.get(0).getPoints());

@@ -1,10 +1,10 @@
 package com.zeda.crisistrivia;
 
+import com.mopub.mobileads.MoPubView;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,6 +21,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	public static final int ACTIVITY_FINISH = 9999;
 	
 	private static MainActivity instance;
+	
+	private Settings settings;
 	
 	
 	private void startActivityQuestion() {
@@ -85,40 +87,42 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		instance = this;
 		
-		Settings settings = Settings.getSettings();
+		settings = Settings.getSettings();
 		
 		setContentView(R.layout.activity_main);
-		
-		if (settings != null) {
-			String txt = settings.getName(0);
-			TextView tv = (TextView) findViewById(R.id.mainName1);
-			tv.setText(txt);
-			
-			txt = settings.getName(1);
-			tv = (TextView) findViewById(R.id.mainName2);
-			tv.setText(txt);
-			
-			txt = settings.getName(2);
-			tv = (TextView) findViewById(R.id.mainName3);
-			tv.setText(txt);
-			
-			int points = settings.getPoints(0);
-			tv = (TextView) findViewById(R.id.mainPoints1);
-			tv.setText("" + points);
-			
-			points = settings.getPoints(1);
-			tv = (TextView) findViewById(R.id.mainPoints2);
-			tv.setText("" + points);
-			
-			points = settings.getPoints(2);
-			tv = (TextView) findViewById(R.id.mainPoints3);
-			tv.setText("" + points);
-		}
+
+		String txt = settings.getName(0);
+		TextView tv = (TextView) findViewById(R.id.mainName1);
+		tv.setText(txt);
+
+		txt = settings.getName(1);
+		tv = (TextView) findViewById(R.id.mainName2);
+		tv.setText(txt);
+
+		txt = settings.getName(2);
+		tv = (TextView) findViewById(R.id.mainName3);
+		tv.setText(txt);
+
+		int points = settings.getPoints(0);
+		tv = (TextView) findViewById(R.id.mainPoints1);
+		tv.setText("" + points);
+
+		points = settings.getPoints(1);
+		tv = (TextView) findViewById(R.id.mainPoints2);
+		tv.setText("" + points);
+
+		points = settings.getPoints(2);
+		tv = (TextView) findViewById(R.id.mainPoints3);
+		tv.setText("" + points);
 		
 		Button startButton = (Button) findViewById(R.id.buttonStart);		
 		startButton.setOnClickListener(this);
 		
 		QuestionDataSource.createSource(startButton.getContext());
+		
+		MoPubView mpv = (MoPubView) findViewById(R.id.adview);
+		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
+		mpv.loadAd();
 	}
 
 	@Override
@@ -166,7 +170,30 @@ public class MainActivity extends Activity implements OnClickListener {
 		} else if (requestCode == ACTIVITY_LEVEL2) {
 			startActivityQuestion();
 		} else {
-			// Return to game: do nothing
+			// Return to game: rewrite rank
+			String txt = settings.getName(0);
+			TextView tv = (TextView) findViewById(R.id.mainName1);
+			tv.setText(txt);
+
+			txt = settings.getName(1);
+			tv = (TextView) findViewById(R.id.mainName2);
+			tv.setText(txt);
+
+			txt = settings.getName(2);
+			tv = (TextView) findViewById(R.id.mainName3);
+			tv.setText(txt);
+
+			int points = settings.getPoints(0);
+			tv = (TextView) findViewById(R.id.mainPoints1);
+			tv.setText("" + points);
+
+			points = settings.getPoints(1);
+			tv = (TextView) findViewById(R.id.mainPoints2);
+			tv.setText("" + points);
+
+			points = settings.getPoints(2);
+			tv = (TextView) findViewById(R.id.mainPoints3);
+			tv.setText("" + points);
 		}
 	}
 	
