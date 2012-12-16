@@ -98,7 +98,6 @@ public class Question {
 
 		Collections.shuffle(a);
 		for (int i=0; i<3; i++) {
-			Log.i("zzz", "" + a.get(i).equals(truth));
 			if (a.get(i).equals(truth))
 				ok = i + 1;
 		}

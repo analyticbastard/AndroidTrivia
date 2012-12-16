@@ -23,5 +23,8 @@
     <string name="title_activity_finish">FinishActivity</string>
     <string name="congratulations">Congratulations</string>
     <string name="level_flash">Flash round!</string>
+    <string name="score_">"Score: "</string>
+    <string name="this_question_">"This question: "</string>
+    <string name="next_question">Next Question</string>
 
 </resources>

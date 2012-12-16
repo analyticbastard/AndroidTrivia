@@ -4,8 +4,12 @@
     android:id="@+id/questions_frame"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#000000"
     android:foregroundGravity="center_vertical|center_horizontal|center|clip_vertical|clip_horizontal" >
+
+    <com.mopub.mobileads.MoPubView
+        android:id="@+id/adviewQuestion"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
 
     <ImageView
         android:id="@+id/floatingMark"
@@ -16,12 +20,41 @@
         android:src="@drawable/ic_launcher"
         android:visibility="invisible" />
 
+    <FrameLayout
+        android:id="@+id/transitionLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="80dp"
+        android:background="#DD333333"
+        android:measureAllChildren="false" >
+
+        <TextView
+            android:id="@+id/scoreText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="50dp"
+            android:text="@string/score_"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/transtitionButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/next_question" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="top|fill_horizontal|clip_vertical|start"
-        android:layout_marginBottom="5dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingTop="50dp" >
 
         <ProgressBar
             android:id="@+id/progressBar1"
@@ -37,7 +70,7 @@
             android:gravity="center"
             android:text="@string/question"
             android:textColor="@android:color/primary_text_dark_nodisable"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:tools="HardcodedText" />
 
         <LinearLayout
@@ -80,6 +113,13 @@
                 android:textColor="@android:color/primary_text_dark"
                 android:textSize="18sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/pointsText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/this_question_"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
 

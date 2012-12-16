@@ -4,13 +4,16 @@ package com.zeda.crisistrivia;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.mopub.mobileads.MoPubView;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,12 +21,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
-public class QuestionPanel extends Activity {
+public class QuestionPanel extends Activity implements View.OnClickListener {
 
 	ImageView iv;
-	Timer timer = new Timer();
-	
-	Question question;
+	Timer timer = null;
+	Timer blinker = null;
+
+	MoPubView mpv = null;
 	
 	
 	private abstract class AdapterClick implements View.OnClickListener {
@@ -59,7 +63,7 @@ public class QuestionPanel extends Activity {
 			int left = Math.round((ll.getX() + b.getX() + (b.getWidth()/2) 
 					- (d.getIntrinsicWidth()/2)));
 			int top = Math.round((ll.getY() + b.getY() + (b.getHeight()/2) 
-					- (d.getIntrinsicHeight()/2)));
+					- (d.getIntrinsicHeight()/2))) + ll.getPaddingTop();
 			
 			iv.setImageDrawable(d);
 			//iv.setTranslationX(left);
@@ -70,6 +74,8 @@ public class QuestionPanel extends Activity {
 			iv.setLayoutParams(lp);
 			iv.bringToFront();
 			iv.setVisibility(ImageView.VISIBLE);
+
+			questionpanel.showScore();
 			
 			GameManager.getManager().advanceQuestionsAnswered();
 		}
@@ -86,8 +92,6 @@ public class QuestionPanel extends Activity {
 			super.onClick(arg0);
 			
 			GameManager.getManager().addPoints();
-
-			questionpanel.finish();
 		}
 	}
 	
@@ -101,21 +105,35 @@ public class QuestionPanel extends Activity {
 		public void onClick(View arg0) {
 			super.onClick(arg0);
 			
-			questionpanel.finish();
+			blinker = new Timer();
+			blinker.schedule(new AnswerBlink(questionpanel), 0, 50);
 		}
 	}
 	
+
+		
 	private class CustomTimerTask extends TimerTask {
 		private static final int TIME_MAX = GameManager.QUESTION_TIME;
 		
-		QuestionPanel qp;
+		QuestionPanel questionpanel;
 		private ProgressBar progressbar = null;
 		private Timer timer;
+		private UITimerTask uitask = new UITimerTask();
 		
 		private int progress = 0;
 		
+		/* Task to run in the UI Task queue so that UI items can be changed
+		 * (they cannot from a non-UI thread such as the timer task).
+		 */
+		private class UITimerTask extends TimerTask {
+			@Override
+			public void run() {
+				questionpanel.showScore();
+			}
+		}
+		
 		public CustomTimerTask (Timer _timer, QuestionPanel _qp) {
-			qp = _qp;
+			questionpanel = _qp;
 			timer = _timer;
 			progressbar = (ProgressBar) findViewById(R.id.progressBar1);
 			progressbar.setMax(TIME_MAX);
@@ -133,12 +151,85 @@ public class QuestionPanel extends Activity {
 
 				GameManager.getManager().advanceQuestionsAnswered();
 				
-				// Finish activity
-				qp.finish();
+				questionpanel.runOnUiThread(uitask);
 			}
 		}
 		
 	}
+	
+	
+	private class TransitionTask extends TimerTask {
+		QuestionPanel questionpanel;
+		
+		private class UITransitionTask extends TimerTask {
+			@Override
+			public void run() {
+				FrameLayout fl = (FrameLayout) findViewById(R.id.transitionLayout1);
+				fl.bringToFront();
+				fl.setVisibility(View.VISIBLE);
+				
+				Button button1=(Button) findViewById(R.id.answerButton1);
+				Button button2=(Button) findViewById(R.id.answerButton2);
+				Button button3=(Button) findViewById(R.id.answerButton3);
+				
+				button1.setOnClickListener(null);
+				button2.setOnClickListener(null);
+				button3.setOnClickListener(null);
+				
+				if (blinker != null)
+					blinker.cancel();
+				
+				TextView tv = (TextView) findViewById(R.id.scoreText1);
+				tv.setText(getString(R.string.score_) + " " + GameManager.getManager().getTotalPoints());
+			}
+		}
+		
+		public TransitionTask(QuestionPanel qp) {
+			questionpanel = qp;
+		}
+
+		@Override
+		public void run() {
+			questionpanel.runOnUiThread(new UITransitionTask());
+		}		
+	}
+	
+	
+	private class AnswerBlink extends TimerTask {
+		private QuestionPanel questionpanel;
+		private UIAnswerBlink uitask = new UIAnswerBlink();
+		
+		private class UIAnswerBlink extends TimerTask {
+			@Override
+			public void run() {
+				int ok = GameManager.getManager().getQuestion().getOk();
+				
+				Button b = (Button) findViewById(R.id.answerButton1);
+				if (ok==2)
+					b = (Button) findViewById(R.id.answerButton2);
+				else if (ok == 3)
+					b = (Button) findViewById(R.id.answerButton3);
+				
+				float size = b.getTextSize();
+				if (size > 16) 
+					size = 16;
+				else
+					size = 20;
+				
+				b.setTextSize(size);
+			}
+		}
+		
+		public AnswerBlink(QuestionPanel qp) {
+			questionpanel = qp;
+		}
+
+		@Override
+		public void run() {
+			questionpanel.runOnUiThread(uitask);
+		}
+	}
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -146,10 +237,42 @@ public class QuestionPanel extends Activity {
 
 		setContentView(R.layout.activity_questions);
 		
+		mpv = (MoPubView) findViewById(R.id.adviewQuestion);
+		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
+		
+		Button tb = (Button) findViewById(R.id.transtitionButton1);
+		tb.setOnClickListener(this);
+		
+		FrameLayout fl = (FrameLayout) findViewById(R.id.transitionLayout1);
+		fl.setVisibility(View.INVISIBLE);
+		
+		showQuestion();
+		
+		// Start timer here to timeout and to update progress bar
+		timer = new Timer();
+		CustomTimerTask ct = new CustomTimerTask(timer, this);
+		timer.schedule(ct, 0, 500);		
+	}
+	
+	public void onDestroy() {
+		super.onDestroy();
+		
+		synchronized(this) {
+			try {
+				this.wait(200);
+			} catch (InterruptedException e) {
+				//Log.w("QuestionPanel", "Wait interrupted: " + e.getMessage());
+			}
+		}
+	}
+	
+	public void showQuestion() {		
+		mpv.loadAd();
+		
 		Question q = GameManager.getManager().getQuestion();
-		question = q;
 		
 		iv = (ImageView) findViewById(R.id.floatingMark);
+		iv.setVisibility(View.INVISIBLE);
 		
 		Button button1=(Button) findViewById(R.id.answerButton1);
 		Button button2=(Button) findViewById(R.id.answerButton2);
@@ -177,6 +300,10 @@ public class QuestionPanel extends Activity {
 		button2.setText(q.getAnswer2());
 		button3.setText(q.getAnswer3());
 		
+		button1.setTextSize(16);
+		button2.setTextSize(16);
+		button3.setTextSize(16);
+		
 		TextView tv = (TextView) findViewById(R.id.questionText);
 		tv.setText(q.getStatement());
 		if (q.getImageID() != null) {
@@ -185,23 +312,96 @@ public class QuestionPanel extends Activity {
 			if (id>0) {
 				tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, id);
 			}
+		} else {
+			tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 		}
 		
-		// Start timer here to timeout and to update progress bar
+		tv = (TextView) findViewById(R.id.pointsText1);
+		tv.setText(""); //q.getDifficulty() * GameManager.MULTIPLIER);
+	}
+	
+	public void showScore() {		
+		GameManager manager = GameManager.getManager();
+		
+		if (manager.getQuestionsAnswered() > 
+				GameManager.QUESTIONS_LEVEL1 + 
+				GameManager.QUESTIONS_LEVEL2 +
+				GameManager.QUESTIONS_LEVEL3) {
+			
+			// If we are at the end of a game
+			if (manager.getQuestionsAnswered() >= GameManager.QUESTIONS_IN_GAME) {
+				startFinishActivity();
+				return;
+			}
+
+			showQuestion();
+			return;
+		}
+		
+		timer = new Timer();
+		timer.schedule(new TransitionTask(this), 1000);
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == MainActivity.ACTIVITY_FINISH) {
+			finish();
+			return;
+		}
+		
+		if (requestCode == MainActivity.ACTIVITY_GAMEOVER) {
+			finish();
+			return;
+		}
+		
+		FrameLayout fl = (FrameLayout) findViewById(R.id.transitionLayout1);
+		fl.setVisibility(View.INVISIBLE);
+		
+		showQuestion();
+		
+		timer = new Timer();
 		CustomTimerTask ct = new CustomTimerTask(timer, this);
 		timer.schedule(ct, 0, 500);
 	}
 	
-	public void onDestroy() {
-		super.onDestroy();
+	@Override
+	public void onClick(View v) {		
+		GameManager manager = GameManager.getManager();
 		
-		synchronized(this) {
-			try {
-				this.wait(200);
-			} catch (InterruptedException e) {
-				Log.w("QuestionPanel", "Wait interrupted: " + e.getMessage());
-			}
+		if ((manager.getQuestionsAnswered() == GameManager.QUESTIONS_LEVEL1)
+				| (manager.getQuestionsAnswered() == 
+				GameManager.QUESTIONS_LEVEL1 + 
+				GameManager.QUESTIONS_LEVEL2)
+				| (manager.getQuestionsAnswered() == 
+				GameManager.QUESTIONS_LEVEL1 + 
+				GameManager.QUESTIONS_LEVEL2 +
+				GameManager.QUESTIONS_LEVEL3)) {
+
+			startLevelActivity();
+			
+			return;
 		}
+	}
+
+	
+	public void startLevelActivity() {
+		Intent intent = new Intent();
+		String packageName =
+				"com.zeda.crisistrivia";
+		String className =
+				"com.zeda.crisistrivia.LevelActivity";
+		intent.setClassName(packageName, className);
+		startActivityForResult(intent, MainActivity.ACTIVITY_LEVEL2);
+	}
+
+	public void startFinishActivity() {
+		Intent intent = new Intent();
+		String packageName =
+				"com.zeda.crisistrivia";
+		String className =
+				"com.zeda.crisistrivia.FinishActivity";
+		intent.setClassName(packageName, className);
+		startActivityForResult(intent, MainActivity.ACTIVITY_FINISH);
 	}
 	
 	public ImageView getIv() {
@@ -218,14 +418,6 @@ public class QuestionPanel extends Activity {
 
 	public void setTimer(Timer timer) {
 		this.timer = timer;
-	}
-
-	public Question getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(Question question) {
-		this.question = question;
 	}
 
 }

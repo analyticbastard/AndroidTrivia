@@ -134,68 +134,95 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		GameManager manager = GameManager.getManager();
-		
-		if (requestCode == ACTIVITY_QUESTION) {
-			if (manager.isFailed())
-				startGameoverActivity();
-			else if (!manager.isGameFinished())
-				if (manager.getQuestionsAnswered() == 
-						GameManager.QUESTIONS_LEVEL1 + 
-						GameManager.QUESTIONS_LEVEL2 +
-						GameManager.QUESTIONS_LEVEL3)
-					startLevelActivity();
-				else if (manager.getLevel() == GameManager.LEVEL_FLASH)
-					startActivityQuestion();
-				else
-					startActivityTransition();
-			else
-				startFinishActivity();
-		} else if (requestCode == ACTIVITY_TRANSITION) {
-			if (!manager.isGameFinished()) {
-				if ((manager.getQuestionsAnswered() == GameManager.QUESTIONS_LEVEL1)
-						| (manager.getQuestionsAnswered() == 
-						GameManager.QUESTIONS_LEVEL1 + 
-						GameManager.QUESTIONS_LEVEL2)
-						| (manager.getQuestionsAnswered() == 
-						GameManager.QUESTIONS_LEVEL1 + 
-						GameManager.QUESTIONS_LEVEL2 +
-						GameManager.QUESTIONS_LEVEL3)   ) {
-					startLevelActivity();
-				} else {
-					startActivityQuestion();
-				}
-			} else
-				startFinishActivity();
-		} else if (requestCode == ACTIVITY_LEVEL2) {
-			startActivityQuestion();
-		} else {
-			// Return to game: rewrite rank
-			String txt = settings.getName(0);
-			TextView tv = (TextView) findViewById(R.id.mainName1);
-			tv.setText(txt);
+		// Return to main window: rewrite rank
+		String txt = settings.getName(0);
+		TextView tv = (TextView) findViewById(R.id.mainName1);
+		tv.setText(txt);
 
-			txt = settings.getName(1);
-			tv = (TextView) findViewById(R.id.mainName2);
-			tv.setText(txt);
+		txt = settings.getName(1);
+		tv = (TextView) findViewById(R.id.mainName2);
+		tv.setText(txt);
 
-			txt = settings.getName(2);
-			tv = (TextView) findViewById(R.id.mainName3);
-			tv.setText(txt);
+		txt = settings.getName(2);
+		tv = (TextView) findViewById(R.id.mainName3);
+		tv.setText(txt);
 
-			int points = settings.getPoints(0);
-			tv = (TextView) findViewById(R.id.mainPoints1);
-			tv.setText("" + points);
+		int points = settings.getPoints(0);
+		tv = (TextView) findViewById(R.id.mainPoints1);
+		tv.setText("" + points);
 
-			points = settings.getPoints(1);
-			tv = (TextView) findViewById(R.id.mainPoints2);
-			tv.setText("" + points);
+		points = settings.getPoints(1);
+		tv = (TextView) findViewById(R.id.mainPoints2);
+		tv.setText("" + points);
 
-			points = settings.getPoints(2);
-			tv = (TextView) findViewById(R.id.mainPoints3);
-			tv.setText("" + points);
-		}
+		points = settings.getPoints(2);
+		tv = (TextView) findViewById(R.id.mainPoints3);
+		tv.setText("" + points);
 	}
+	
+//	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		GameManager manager = GameManager.getManager();
+//		
+//		if (requestCode == ACTIVITY_QUESTION) {
+//			if (manager.isFailed())
+//				startGameoverActivity();
+//			else if (!manager.isGameFinished())
+//				if (manager.getQuestionsAnswered() == 
+//						GameManager.QUESTIONS_LEVEL1 + 
+//						GameManager.QUESTIONS_LEVEL2 +
+//						GameManager.QUESTIONS_LEVEL3)
+//					startLevelActivity();
+//				else if (manager.getLevel() == GameManager.LEVEL_FLASH)
+//					startActivityQuestion();
+//				else
+//					startActivityTransition();
+//			else
+//				startFinishActivity();
+//		} else if (requestCode == ACTIVITY_TRANSITION) {
+//			if (!manager.isGameFinished()) {
+//				if ((manager.getQuestionsAnswered() == GameManager.QUESTIONS_LEVEL1)
+//						| (manager.getQuestionsAnswered() == 
+//						GameManager.QUESTIONS_LEVEL1 + 
+//						GameManager.QUESTIONS_LEVEL2)
+//						| (manager.getQuestionsAnswered() == 
+//						GameManager.QUESTIONS_LEVEL1 + 
+//						GameManager.QUESTIONS_LEVEL2 +
+//						GameManager.QUESTIONS_LEVEL3)   ) {
+//					startLevelActivity();
+//				} else {
+//					startActivityQuestion();
+//				}
+//			} else
+//				startFinishActivity();
+//		} else if (requestCode == ACTIVITY_LEVEL2) {
+//			startActivityQuestion();
+//		} else {
+//			// Return to game: rewrite rank
+//			String txt = settings.getName(0);
+//			TextView tv = (TextView) findViewById(R.id.mainName1);
+//			tv.setText(txt);
+//
+//			txt = settings.getName(1);
+//			tv = (TextView) findViewById(R.id.mainName2);
+//			tv.setText(txt);
+//
+//			txt = settings.getName(2);
+//			tv = (TextView) findViewById(R.id.mainName3);
+//			tv.setText(txt);
+//
+//			int points = settings.getPoints(0);
+//			tv = (TextView) findViewById(R.id.mainPoints1);
+//			tv.setText("" + points);
+//
+//			points = settings.getPoints(1);
+//			tv = (TextView) findViewById(R.id.mainPoints2);
+//			tv.setText("" + points);
+//
+//			points = settings.getPoints(2);
+//			tv = (TextView) findViewById(R.id.mainPoints3);
+//			tv.setText("" + points);
+//		}
+//	}
 	
 	public void exit() {
 		finish();
