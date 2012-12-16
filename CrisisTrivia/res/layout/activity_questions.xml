@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/right"
         android:visibility="invisible" />
 
     <FrameLayout
@@ -113,13 +113,6 @@
                 android:textColor="@android:color/primary_text_dark"
                 android:textSize="18sp" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/pointsText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/this_question_"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </LinearLayout>
 

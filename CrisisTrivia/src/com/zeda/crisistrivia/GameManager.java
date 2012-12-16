@@ -9,13 +9,13 @@ public class GameManager {
 	
 	public static final int MULTIPLIER = 50;
 	
-	public static final int QUESTIONS_LEVEL1 = 1;
-	public static final int QUESTIONS_LEVEL2 = 1;
-	public static final int QUESTIONS_LEVEL3 = 1;
+	public static final int QUESTIONS_LEVEL1 = 4;
+	public static final int QUESTIONS_LEVEL2 = 3;
+	public static final int QUESTIONS_LEVEL3 = 2;
 	
 	public static final int QUESTIONS_FLASH_LEVEL1 = 1;
-	public static final int QUESTIONS_FLASH_LEVEL2 = 0;
-	public static final int QUESTIONS_FLASH_LEVEL3 = 0;
+	public static final int QUESTIONS_FLASH_LEVEL2 = 1;
+	public static final int QUESTIONS_FLASH_LEVEL3 = 1;
 	
 	public static final int QUESTIONS_FLASH = QUESTIONS_FLASH_LEVEL1
 			+ QUESTIONS_FLASH_LEVEL2 + QUESTIONS_FLASH_LEVEL3;
@@ -25,7 +25,7 @@ public class GameManager {
 	
 	public static final int FAIL_QUESTIONS_LEVEL1 = 2;
 	public static final int FAIL_QUESTIONS_LEVEL2 = 2;
-	public static final int FAIL_QUESTIONS_LEVEL3 = 2;
+	public static final int FAIL_QUESTIONS_LEVEL3 = 1;
 	public static final int FAIL_QUESTIONS_FLASH = 1;
 	
 	public static final int LEVEL1 = 1;
@@ -41,7 +41,6 @@ public class GameManager {
 	private int totalPoints = 0;
 	
 	private int questionsAnswered = 0;
-	private int questionsOK = 0;
 	private int questionsLevelOK = 0;
 	
 	public int getTotalPoints() {
@@ -107,7 +106,6 @@ public class GameManager {
 				+ questions.get(getQuestionsAnswered() - 1).getDifficulty()
 				* MULTIPLIER);
 		
-		questionsOK++;
 		questionsLevelOK++;
 	}
 
@@ -131,7 +129,6 @@ public class GameManager {
 	public void resetGame() {
 		questionsAnswered = 0;
 		setTotalPoints(0);
-		questionsOK = 0;
 		questionsLevelOK = 0;
 		
 		getQuestionFromSource();

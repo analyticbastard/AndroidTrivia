@@ -133,7 +133,7 @@ public class Settings {
 			
 			name3 = name2;
 			name2 = userName;
-		} else if (points > points2) {
+		} else if (points > points3) {
 			points3 = points;
 			
 			name3 = userName;

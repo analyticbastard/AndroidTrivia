@@ -12,7 +12,9 @@ public class FinishActivity extends Activity implements View.OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_finish);		
+		setContentView(R.layout.activity_finish);
+		
+		Settings.getSettings().saveRank();
 		
 		RelativeLayout rl = (RelativeLayout) findViewById(R.id.finishLayout);
 		rl.setOnClickListener(this);
