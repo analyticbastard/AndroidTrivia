@@ -11,8 +11,8 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,Where and when is this picture from? ,weimar1,"Germany, 1922","Post-war Germany, 1945 ","German 2nd Reich, 1915 "
 10,Who is this person?,geithner1,Timothy Geithner,Henry Paulson,Jean Claude Trichet
 10,What is the highest denomination of a Zimbawean dollar note?,,One hundred trillion,Ten millions,One hundred
-10,What president signed the Executive order 6102,,Franklin D. Roosevelt,Harry S. Truman,Teodor Roosevelt
-10,What is this?,sovereign1,A British Sovereign,A French imperial coin,A Tudor 1588 gold coin
+10,Which president signed the Executive order 6102,,Franklin D. Roosevelt,Harry S. Truman,Teodor Roosevelt
+10,What is this?,sovereign1,A British Sovereign,"A French ""Napoleon"" coin",A Greek gold coin
 10,What is a United States Note?,,A note issued by the Treasury of the United States until 1971,The current legal tender in the USA,A treasury bond
 10,What is a Federal Rerve Note?,,A note issued by a private institution,A note backed by the reserves of the US government,A note legalized by the US Constitution
 10,What is inflation?,,"General price increases due to excess of monetary mass, or erosion of purchasing power of money ","General price rises, due to the economic laws of supply and demand",General price decreases do to the inceased industrial capacity
@@ -27,8 +27,8 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,What is the secondary market?,,A market where private owners may sell their entitlements to willing buyers,A market where only second quality assets may be sold,A market where subprime assets are tradeable
 10,This picture refers to the misery coming from. . .,,Hiper-inflationary monatary policies,The Franco-prussian war,Industrial recession in the US
 10,Who is the president of the European Central Bank as of 2013,,Mario Draghi,Jean-Claude Trichet,Herman Van Rompuy
-10,Bearings bank was collapsed by what famous rogue trader?,,Nick Leeson,Jérôme Kerviel,Marc Faber
-10,Which one of these traders was accused of losing €4900 million in 2008?,,Jérôme Kerviel,Nick Leeson,Mohamed El-Erian
+10,Bearings bank was collapsed by what famous rogue trader?,,Nick Leeson,Jerome Kerviel,Marc Faber
+10,Which one of these traders was accused of losing 4900 million euro in 2008?,,Jerome Kerviel,Nick Leeson,Mohamed El-Erian
 10,The what price the 3rd centry Roman Empire rose 5000-fold because. . .,,Inflation caused by loss of mintage quality,Inflation caused from coinage coming from newly-discovered silver mines,A series of floods in the Nile disrupted normal grain trade
 10,What is a public offering?,,A sale to individuals or institutions of a company's shares,The offering of a company's stock to the public,A stock floating on the secondary market
 10,How did Nathan Rothschild know the outcome of the battle of Waterloo in 1815 even before the UK government?,,The Rothschild family had spies on the two sides and the best network of couriers,They prevented Napoleon from obtaning 100 pieces or artillery and other weaponry,They bribed Napoleon's generals into giving him false tactical information
@@ -48,8 +48,8 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,"Apart from Latin America, the Spanish ""Real de a 8"" silver coin was used. . .",8reales1,"In the United States and China, where they were engraved with an imperial seal","In the United States and Japan, were they were engraved with the imperial seal",In the French colonies and Quebec
 10,"Why was the gold standard removed, after centuries of monetary stability?",,European powers needed to finance the costs of WWI,Banks' reserves ran low,It was an issue resolved in the Bismarck conference
 10,Why did the US ended the Bretton Woods Accords of 1944?,,The Nixon administration was unable to honor the agreement of handing over 1 ounce of gold at $35,The Warsaw pact didn't fulfill their end,The international speculator was attacking the Dollar
-10,Why did foreign countries withdraw tons of gold at $35 per ounce at the NY Fed in 1971?,,Governments were fearful that the US was financing the Vietnam costs at their expense and demanded hard money,Governments opposed Napalm attacks against civil population,Governents were threatened by the USSR
-10,"After interrumpting ""The House on the Prairie"", Nixon pronounced a famous speech in 1971 about. . .",,The closing of the gold window because of the international currency speculator,The end of the Bretton Woods Accords because of the Vietnam war,Closing the New Yok Fed
+10,Why did foreign countries withdraw tons of gold at $35 per ounce at the NY Fed in 1971?,,Governments were fearful that the US was financing the Vietnam costs at their expense,Governments opposed Napalm attacks against civil population,Governents were threatened by the USSR
+10,"After interrumpting ""The House on the Prairie"", Nixon pronounced a famous speech in 1971 about. . .",,The closing of the gold window,The multilateral end of the Bretton Woods Accords,Closing the New Yok Fed
 10,What was the consequence of G. W. Bush Home ownership programme?,,It created a housing bubble that ended up in the subprime market collapsing in 2007,"It helped low-income families own a stable place, as the President said",It created a housing bubble that affected the subprime market but not the prime market
 10,Which one is an advice by Economics Nobel laureate Paul Krugman?,,Create a housing bubble as a cushion for the NASDAQ bubble,Expand the monetary supply to cushion the NASDAQ bubble,Expand the monetary supply to purchase hard assets
 10,What is a future contract?,,It is a financial contract whereby something paid today is delivered at a specified date,It is a financial contract whereby something delivered today is paid at a specified date,It is the promise to repay any debt at a date in the future
@@ -58,3 +58,97 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,What is the name of the Chinese currency?,,The renminbi,The Chinese yen,The Chinese dollar
 10,What is the name of the currency in the United Kingdom?,,The pound sterling,The British pound,The UK pound
 10,What does fiat money mean?,,Money based on trust,It is the revenue of the car maker Fiat,It was the Roman coin after the denarius
+10,What is this?,rooster1,"A 20 French francs Napoleon ""rooster""",A French 20 Francs 2nd republic gold coin,A French 20 Francs 5th republic gold coin
+10,Who is this person?,greenspan1,Alan Greenspan,Ben S. Bernanke,Paul Volcker
+10,What was LTCM?,,A hedge fund that collapsed in 1998 and was bailed out by the Fed,A hedge fund that caused the 1997 Asian currency collapse,The hedge fund that Soros used to break the BoE's currency reserves
+10,Who founded LTCM?,,John Meriwether,Jim Rogers,Nobel Laureate Myron Scholes
+10,LTCM bailout is famous for being. . .,,The first huge bailout and the one that gave name to the Greenspan's put ,The first of a series of bailouts starting in 2007,The first bailout in the 2008 crisis
+10,What is the bid price?,,It is the best offered price,It is a level II quote field but not a level III field,It is the best selling price
+10,What is the ask price?,,It is the best selling price,It is the last traded price appearing to the seller,It is the best offered price
+10,What is the last price in an electronic quote?,,It is the price that the seller and buyer of the last operation agreed upon,It is the last outstanding selling price,It is the best offered price
+10,What is the NASDAQ?,,It is an electronic market focused on trading shares of technology companies,It is an electronic market system,It is a an Amercian electronic market focused on start-ups
+10,What is this?,maple1,"A 1 Oz. Canadian ""Maple""",A Canadian 1960 gold coin,"A 1 Oz. Canadian ""Mountie"""
+10,What is leverage?,,It refers to using resources one does not own,Using a lever system in the markets,Betting large amounts of money
+10,Bearn Stearns' bailout was. . .,,The first in the 2008 financial crisis,Sponsored by the Fed and Merryl Lynch,Sponsored by the Treasury and Merryl Lynch
+10,What is the IMF?,,International Monetary Fund,International Market Funding,International Money Forwarders
+10,What is this?,eagle1,An American Silver Eagle,A British Silver pound,An American half-dollar of 1964
+10,"According to popular financial sites, gold is flowing from the West. . .",,to the rest,to the rich,to the companies
+10,What is Technical Analysis?,,Forecasting the direction of prices through the study of past market data,Forecasting the direction of prices based on mathematical techniques,Quantitative management of portfolio
+10,What is Fundamental Analysis?,,Forecasting the direction of prices based on a company's circumstances and macroeconomic variables,Forecasting the direction of prices based on mathematical techniques,Amalysis of the conformity of a bank books to the applicable law
+10,The 2010 campaign by TV host Max Kaiser consisted of. . .,,Hold possession of physical silver either by buying bullion or taking delivery,Hold possession of physical gold either by buying bullion or taking delivery,Buying up the metals futures market
+10,Which bank was the target of the 2010 Max Kaiser's campaign?,,JP Morgan Chase,Scotia Moccata,Goldman Sachs
+10,Who was a pioneering mathematical investor?,,Ed Thorp,Blythe Masters,Lawrence Livermore
+10,What is Fanny Mae?,,A mortgate brokerage,A bank,An insurance broker
+10,What is AIG?,,An insurance broker,American Insurance Group,A bank
+10,What is the LBMA?,,A London-based cartel that sets the gold's price,A Latin-American commerce association,A Libanese trading post
+10,Which bank is not a CME licensed gold depository?,,Goldman Sachs,JP Morgan Chase,Scotiamocatta
+10,What is a bitcoin?,,A decentralized virtual currency,A world currency replacement for the dollar,A coin made of two bits
+10,What is the FOMC's Commitments of Traders report?,,An enumeration of the holdings of participants in various futures markets,The list of participants in the major US markets,The list of participants in all the US markets
+10,Who is the costodian of the ETF iShares SLV silver vault?,,JP Morgan Chase,Goldman Sachs,SLV doesn'r rely on third parties when it comes to the custody of the metal 
+10,"What is an ""actuary""?",,A business professional who deals with the financial impact of risk and uncertainty,A financial professional who evaluates current economic events,A financial professional who makes derivatives
+10,"What is known as a ""quant""?",,A financial professional that employs advanced mathematical techniques to profit from the market,A quantitative trading strategy,A technical analyst
+10,What is the best known mortgage lender after Fannie Mae?,,Freddie Mac,AIG,Wells Fargo
+10,Which one is a main point in the Glass-Steagal Act?,,Separation between investment and commercial banking,Bringing opaque products to open exchanges,Extension of the FDIC
+10,What does QE stand for?,,Quantitative Easing,Quantitative Economics,Quadratic Extension
+10,What is PIMCO?,,The largest active global fixed income managers in the world,A Japanese morgage brokerage,A hedge fund
+10,Who are the two best known partners at PIMCO?,,Bill Gross and Muhammed El-Erian,Jim Rogers and Marc Faber,Lawrence Livermore and Nathan Rothschild
+10,Who is this person?,papandeou1,Papandeou,Papademos,Herman Van Rompuy
+10,Who is this person?,barroso1,Durao-Barroso,Papademos,Herman Van Rompuy
+10,Who is this person?,merkel1,Angela Merkel,Blythe Masters,Christine Lagarde
+10,What is the SEC?,,An agency that regulates and enforces federal laws in the securities industry,A hedge fund,An exchange
+10,What does SEC stand for?,,Securities and Exchanges Commision,Silver Exchange Corporation,Secure Electronic Connections
+10,What does LTCM stand for?,,Long-Term Capital Management,Large Trading and Capitalization Market,Large Trading and Capitalization Management
+10,What is the Black Friday?,,A day with heavy discounts in retail sales,A special day for the black community,A day in which the Dow Jones dropped 6%
+10,When did the Black Monday happen?,,"Monday October 19, 1987","Monday October 23, 1929","Monday September 27, 2010"
+10,What are the BRICs?,,A group of former emergent countries,Credit derivatives,A group of investment banks
+10,What was the Billionaire Boys Club?,,A pyramidal scheme,A club for high-income individuals,A sucressful investment club
+10,What is Skull & Bones?,skull1,A selected group of students,A transgressive rock band,A high-seas pirate syndicate
+10,Freemasons gather together in. . .,,Lodges,Building sites,Hardware stores
+10,Which was was to blame of the dollar devaluation according to Nixon?,,The international currency speculator,The businessmen,The layman
+10,Who was Angela Merkel's mentor?,,Helmut Kohl,Gerhard Schroeder,Willy Brandt
+10,"Who said ""I will never trust in paper money""?",,Napoleon Bonaparte,Ben Bernanke,Hjalmar Schacht
+10,"In his famous Speech, Kennedy was opposed to. . .",,Secret societies,Banking excesses,Excessive monetary expansion
+10,Dutch tulips are an example of. . .,,A financial bubble,Beauty,Stock trading
+10,The French 1st republic raised funds by. . .,,Issuing rapidly-inflationary paper money,Taking loans from the Florentian families,Selling the French Louisiana to the US
+10,Who is J.M. Durao-Barroso?,,The president of the European Commission,The Portuguese finance minister,The Portuguese PM as of 2012
+10,"Who said the following quote ""It is well enough that people of the nation do not understand our banking and monetary system, for if they did, I believe there would be a revolution before tomorrow morning""",,Henry Ford,Nathan Mayer Rothschild,J. Rockefeller
+10,Chardinal Richelieu's economic policy was named. . .,,Merchantilism,Richelenian,Capitalism
+10,What is Merchantilism?,,Importing less that exporting,Remove taxes to trading,Remove taxes to production
+10,Ron Paul promotes. . .,,Libertarism,Merchantilism,Socialism
+10,What is liberalism?,,"A political philosophy supporting civil and individual rights, freedom of the press, of religion, trade",An economic system based on private ownership of the means of production and selling the production for profit,A form of government in which the State owns almost everything and plans every aspect of the economy
+10,"In a liberal system, if a bank fails, it. . .",,Files for bankrupt,Is bailed-out by the government,Receives an assistance package from its central bank
+10,A cleptocracy is a system in which. . .,,Those who steal rule,Those who vote rule,One can vote his/her own laws directly
+10,"As of the end of 2012, what percentage of the newly-issued debt would be bought by the Fed?",,90%,80%,50%
+10,What is socialism?,,A form of government in which the State heavily intervenes the economy,A form of government in which the State owns almost everything and plans every aspect of the economy,A form of government in which the State provides everything for free
+10,What is comunism?,,A form of government in which the State owns almost everything and plans every aspect of the economy,A form of government in which the State heavily intervenes the economy,A form of government in which the State subsidizes everything
+10,What is capitalism?,,An economic system based on private ownership of the means of production and selling the production for profit,An economic system in which the rich always accumulates wealth,A form of government in which the State subsidizes nothing
+10,Spanish financial problems come from. . .,,A 13-year long housing bubble,A weak financial system,Constantly forgiving debt to other countries
+10,"In Western Europe, the students who organized the pro-rights revolts in Spring '68 ended up. . .",,As budget-cutting politicians in the European institutions,As bankers,As expensive hippie clothing manufacturers
+10,"In most countries, the retirement funds are, by definition. . .",,A pyramidal scheme,A robust scheme,An investment
+10,What was the currency in Italy before the euro?,,The lira,The Italian pound,The Italian franc
+10,What was the currency in France before the euro?,,The French franc,The French pound,The French mark
+10,What was the currency in the Rep. of Ireland before the euro?,,The Irish pound,The Irish dollar,The morrigan
+10,Irish financial problems come from. . .,,A housing bubble,An overextended financial system,Lack of industrial activity
+10,"After the credit froze in 2008 and the unemployment soared, the 2012 Spanish housing market fell. . .",,20%,50%,40%
+10,What is keynesianism?,,An economic view that advocates public intervention to compensate alleged inefficiencies of the private sector,An economic theory that promotes subsidies of key industries,An economic theory that establishes when to intervene a market
+10,Who is John Maynard Keynes?,,"The 1st Baron Keynes, of Tilton in the County of Sussex",The leading figure of the Chicago School of thought,A recent proponent of the Austrian School
+10,What does BIS stand for?,,Bank of International Settlements,Bank of International Stocks,Bank of the Islamic Sharia
+10,Credit is to the economy as. . .,,Drugs to sports,Gold to money,Inflation to deflation
+10,Bernie Madoff performed duties as. . .,,NASDAQ CEO,White-collar stealing,Stock analyst
+10,Who was the head of a pyramidal scheme that notoriously blew up in 2011?,,Bernie Madoff,Lloyd Blankfein,Blythe Masters
+10,What contracts are traded at NYMEX?,,WTI futures,Brent futures,Cushing spot swaps
+10,Where does the Brent future contract trade?,,ICE,NYMEX,CBOE
+10,What does Brent oil mean?,,Oil pumped from the Norwegian North Sea coast,Oil mixed with heavy sands,Oil from the OPEC
+10,What is the oil that sets gas prices in Europe?,,Brent oil,OPEC oil,WTI oil
+10,Brent oil contracts are traded. . .,,In London and priced in dollars,In London and priced in pounds sterling,In New York City and priced in dollars
+10,"What can I pick up in Cushing, Ocklahoma?",,WTI barrels,Live cattle,Wheat bushels
+10,Where is the strait of Hormuz?,,In the Persial gulf,In Southern Spain,In Northern Iran
+10,What is the OPEC?,,An oil cartel composed mostly of Arab nations with headquartes in Vienna,An oil company,An oil cartel with headquartes in Qatar
+10,"Who said ""I believe that banking institutions are more dangerous to our liberties than standing armies""?",,Thomas Jefferson,Benjamin Franklin,John Adams
+10,"Who said ""The modern theory of the perpetuation of debt has drenched the earth with blood, and crushed its inhabitants under burdens ever accumulating""?",,Thomas Jefferson,James Madison,Andrew Jackson
+10,"In his speech against the 1809 recharter of the First Bank, Thomas Jefferson said. . .",,"The issuing power should be taken from the banks and restored to the people, to whom it properly belongs",I believe that banking institutions are more dangerous to our liberties than standing armies,"Congress was given the reight to issue paper money themselves, not to delegate it to individuals or corporations"
+10,"Who said ""Issue of currency should be lodged with the government and be protected from domination by Wall Street""?",,Theodore Roosevelt,James Madison,Benjamin Franklin
+10,"Who said ""If congress has the right under the Constitution to issue paper money, it was  given them to use themselves, not to be delegated to individuals or corporations""?",,Andrew Jackson,James Madison,Thomas Jefferson
+10,"The words ""I am a most unhappy man. I have unwittingly ruined my country…"" were written by. . .",,Woodrow Wilson,Theodor Roosevelt,Franklin D. Roosevelt
+10,Who is this person?,madoff1,Bernard Madoff,Lloyd Blankfein,John Corzine
+10,"Who said ""Money has no motherland; financiers are without patriotism and without decency; their sole object is gain""?",,Napoleon Bonaparte,Thomas Jefferson,Benjamin Franklin
