@@ -1,11 +1,7 @@
 package com.zeda.crisistrivia;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -26,20 +22,6 @@ public class TransitionActivity extends Activity implements View.OnClickListener
 		public void setMsg(String msg) {
 			this.msg = msg;
 		}
-	}
-	
-	private class CustomTimerTask extends TimerTask {
-		TransitionActivity ta;
-		
-		public CustomTimerTask (TransitionActivity _ta) {
-			ta = _ta;
-		}
-		
-		@Override
-		public void run() {
-			ta.closeView();
-		}
-		
 	}
 	
 	public void closeView() {

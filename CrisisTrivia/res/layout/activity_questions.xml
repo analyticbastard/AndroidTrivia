@@ -46,6 +46,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/next_question" />
+        
+        <com.zeda.crisistrivia.VerticalTextView
+            style="@style/verticalTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|right"
+            android:text="@string/support_string"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </FrameLayout>
 

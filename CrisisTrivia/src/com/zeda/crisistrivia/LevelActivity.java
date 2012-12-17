@@ -1,5 +1,7 @@
 package com.zeda.crisistrivia;
 
+import com.mopub.mobileads.MoPubView;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,11 @@ public class LevelActivity extends Activity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_level);
+		
+		MoPubView mpv = (MoPubView) findViewById(R.id.adviewlevel);
+		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
+		mpv.loadAd();
+		mpv.bringToFront();
 		
 		if (GameManager.getManager().getLevel() == GameManager.LEVEL3) {
 			TextView tv = (TextView) findViewById(R.id.levelTextView);

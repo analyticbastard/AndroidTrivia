@@ -17,14 +17,13 @@
     <string name="title_activity_level">LevelActivity</string>
     <string name="title_activity_game_over">GameOverActivity</string>
     <string name="game_over">Game Over</string>
-    <string name="level_2">Level 2</string>
-    <string name="level_3">Level 3</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_finish">FinishActivity</string>
+    <string name="level_2">Loading\nLevel 2</string>
+    <string name="level_3">Loading\nLevel 3</string>
+    <string name="level_flash">Loading\nFlash round!</string>
     <string name="congratulations">Congratulations</string>
-    <string name="level_flash">Flash round!</string>
     <string name="score_">"Score: "</string>
     <string name="this_question_">"This question: "</string>
     <string name="next_question">Next Question</string>
+    <string name="support_string">Hola mamoochi</string>
 
 </resources>

@@ -47,10 +47,6 @@ public class Settings {
 			return date;
 		}
 
-		public void setDate(Date date) {
-			this.date = date;
-		}
-
 		public int getPoints() {
 			return points;
 		}

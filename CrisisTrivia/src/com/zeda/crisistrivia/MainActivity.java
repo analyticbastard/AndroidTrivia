@@ -123,6 +123,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		MoPubView mpv = (MoPubView) findViewById(R.id.adview);
 		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
 		mpv.loadAd();
+		mpv.bringToFront();
 	}
 
 	@Override

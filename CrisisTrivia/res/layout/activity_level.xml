@@ -6,6 +6,11 @@
     android:background="#000000"
     android:clickable="true"
     tools:context=".LevelActivity" >
+    
+    <com.mopub.mobileads.MoPubView
+        android:id="@+id/adviewlevel"
+        android:layout_width="fill_parent"
+        android:layout_height="200px" />
 
     <TextView
         android:id="@+id/levelTextView"

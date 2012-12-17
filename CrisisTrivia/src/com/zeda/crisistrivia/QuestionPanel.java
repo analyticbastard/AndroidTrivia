@@ -27,6 +27,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 
 	ImageView iv;
 	Timer timer = null;
+	final Animation animation = new AlphaAnimation(1, 0); 
+	// Change alpha from fully visible to invisible
 
 	MoPubView mpv = null;
 	
@@ -107,13 +109,6 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			Question q = GameManager.getManager().getQuestion();
 			
 			super.onClick(arg0);
-			
-			final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
-		    animation.setDuration(50); 
-		    animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
-		    animation.setRepeatCount(7); 
-		    animation.setRepeatMode(Animation.REVERSE);
-		    
 		    
 		    Button btn = (Button) findViewById(R.id.answerButton1);
 		    if (q.getOk() == 2)
@@ -143,6 +138,16 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		private class UITimerTask extends TimerTask {
 			@Override
 			public void run() {
+				Question q = GameManager.getManager().getQuestion();
+				
+				Button btn = (Button) findViewById(R.id.answerButton1);
+			    if (q.getOk() == 2)
+			    	btn = (Button) findViewById(R.id.answerButton2);
+			    else if (q.getOk() == 3)
+			    	btn = (Button) findViewById(R.id.answerButton3);
+			    
+			    btn.startAnimation(animation);
+			    
 				questionpanel.showScore();
 			}
 		}
@@ -163,10 +168,10 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			} else {
 				timer.cancel();
 				timer.purge();
-
-				GameManager.getManager().advanceQuestionsAnswered();
 				
 				questionpanel.runOnUiThread(uitask);
+
+				GameManager.getManager().advanceQuestionsAnswered();
 			}
 		}
 		
@@ -223,6 +228,11 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		FrameLayout fl = (FrameLayout) findViewById(R.id.transitionLayout1);
 		fl.setVisibility(View.INVISIBLE);
+		
+	    animation.setDuration(50); 
+	    animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+	    animation.setRepeatCount(7); 
+	    animation.setRepeatMode(Animation.REVERSE);
 		
 		showQuestion();	
 	}
@@ -300,6 +310,11 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 	
 	public void showScore() {		
 		GameManager manager = GameManager.getManager();
+		
+		if (manager.isFailed()) {
+			startGameoverActivity();
+			return;
+		}
 			
 		// If we are at the end of a game
 		if (manager.getQuestionsAnswered() >= GameManager.QUESTIONS_IN_GAME - 1) {

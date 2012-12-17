@@ -3,7 +3,6 @@ package com.zeda.crisistrivia;
 import java.util.Collections;
 import java.util.Vector;
 
-import android.util.Log;
 
 public class Question {
 	private int difficulty;
