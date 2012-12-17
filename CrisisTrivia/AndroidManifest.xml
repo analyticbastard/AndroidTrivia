@@ -35,11 +35,6 @@
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.zeda.crisistrivia.TransitionActivity"
-            android:label="@string/title_activity_transition"
-            android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-        <activity
             android:name="com.zeda.crisistrivia.LevelActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_level"
