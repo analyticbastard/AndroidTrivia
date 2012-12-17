@@ -128,7 +128,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		QuestionPanel questionpanel;
 		private ProgressBar progressbar = null;
 		private Timer timer;
-		private UITimerTask uitask = new UITimerTask();
+		private UITimerTask uitask = null;
 		
 		private int progress = 0;
 		
@@ -136,19 +136,27 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		 * (they cannot from a non-UI thread such as the timer task).
 		 */
 		private class UITimerTask extends TimerTask {
+			private Question question = null;
+
+			public UITimerTask (Question q) {
+				question = q;
+			}
+			
 			@Override
 			public void run() {
-				Question q = GameManager.getManager().getQuestion();
-				
 				Button btn = (Button) findViewById(R.id.answerButton1);
-			    if (q.getOk() == 2)
+			    if (question.getOk() == 2)
 			    	btn = (Button) findViewById(R.id.answerButton2);
-			    else if (q.getOk() == 3)
+			    else if (question.getOk() == 3)
 			    	btn = (Button) findViewById(R.id.answerButton3);
 			    
 			    btn.startAnimation(animation);
 			    
 				questionpanel.showScore();
+			}
+			
+			public void setQuestion(Question question) {
+				this.question = question;
 			}
 		}
 		
@@ -158,6 +166,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			progressbar = (ProgressBar) findViewById(R.id.progressBar1);
 			progressbar.setMax(TIME_MAX);
 			progressbar.setProgress(0);
+			uitask = new UITimerTask(GameManager.getManager().getQuestion());
 		}
 
 		@Override
@@ -169,9 +178,12 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 				timer.cancel();
 				timer.purge();
 				
-				questionpanel.runOnUiThread(uitask);
+				Question q = GameManager.getManager().getQuestion();
+				uitask.setQuestion(q);
 
 				GameManager.getManager().advanceQuestionsAnswered();
+				
+				questionpanel.runOnUiThread(uitask);
 			}
 		}
 		
