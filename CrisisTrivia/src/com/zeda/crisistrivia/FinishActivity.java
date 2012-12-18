@@ -1,5 +1,8 @@
 package com.zeda.crisistrivia;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -13,6 +16,12 @@ public class FinishActivity extends Activity implements View.OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_finish);
+		
+		AdView adView = (AdView) this.findViewById(R.id.adviewfinish);
+		AdRequest adRequest = new AdRequest();
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
+		adView.loadAd(adRequest);
 		
 		Settings.getSettings().saveRank();
 		

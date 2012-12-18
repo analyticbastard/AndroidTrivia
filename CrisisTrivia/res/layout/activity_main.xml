@@ -1,16 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
     tools:context=".MainActivity" >
-    
-    <com.mopub.mobileads.MoPubView
+        
+  <!-- <com.mopub.mobileads.MoPubView
         android:id="@+id/adview"
         android:layout_width="fill_parent"
-        android:layout_height="50px" />
+        android:layout_height="50px" />  -->
+    
+<com.google.ads.AdView
+    android:id="@+id/adview"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    ads:adSize="BANNER"
+    ads:adUnitId="a150cf4c8c18117"
+    ads:testDevices="TEST_EMULATOR, B3EEABB8EE11C2BE770B684D95219ECB"
+    ads:loadAdOnCreate="true" />
 
-    <Button
+<Button
         android:id="@+id/buttonResume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

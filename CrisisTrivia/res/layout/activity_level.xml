@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:id="@+id/levelLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -7,15 +8,25 @@
     android:clickable="true"
     tools:context=".LevelActivity" >
     
-    <com.mopub.mobileads.MoPubView
+    <!--  <com.mopub.mobileads.MoPubView
         android:id="@+id/adviewlevel"
         android:layout_width="fill_parent"
-        android:layout_height="200px" />
+        android:layout_height="200px" /> -->
+    
+    <com.google.ads.AdView
+    android:id="@+id/adviewlevel"
+    android:layout_width="fill_parent"
+    android:layout_height="200px"
+    android:layout_alignParentTop="true"
+    ads:adSize="BANNER"
+    ads:adUnitId="a150cf4c8c18117"
+    ads:testDevices="TEST_EMULATOR, B3EEABB8EE11C2BE770B684D95219ECB"
+    ads:loadAdOnCreate="true" />
 
     <TextView
         android:id="@+id/levelTextView"
-        android:layout_width="142dp"
-        android:layout_height="74dp"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
         android:gravity="center"
         android:text="@string/level_2"

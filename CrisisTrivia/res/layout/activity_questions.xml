@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="ignore:http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:id="@+id/questions_frame"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:foregroundGravity="center_vertical|center_horizontal|center|clip_vertical|clip_horizontal" >
 
-    <com.mopub.mobileads.MoPubView
+    <!--  <com.mopub.mobileads.MoPubView
         android:id="@+id/adviewQuestion"
         android:layout_width="fill_parent"
-        android:layout_height="50dp" />
+        android:layout_height="50dp" /> -->
+        
+<com.google.ads.AdView
+    android:id="@+id/adviewQuestion"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    ads:adSize="BANNER"
+    ads:adUnitId="a150cf4c8c18117"
+    ads:loadAdOnCreate="true"
+    ads:testDevices="TEST_EMULATOR, B3EEABB8EE11C2BE770B684D95219ECB" />
 
     <ImageView
         android:id="@+id/floatingMark"
@@ -85,8 +96,8 @@
             android:id="@+id/answersLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
             android:orientation="vertical"
             android:paddingBottom="5dp"
             android:paddingTop="10dp" >

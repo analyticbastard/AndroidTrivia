@@ -1,6 +1,8 @@
 package com.zeda.crisistrivia;
 
-import com.mopub.mobileads.MoPubView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -120,10 +122,19 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		QuestionDataSource.createSource(startButton.getContext());
 		
-		MoPubView mpv = (MoPubView) findViewById(R.id.adview);
-		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
-		mpv.loadAd();
-		mpv.bringToFront();
+//		MoPubView mpv = (MoPubView) findViewById(R.id.adview);
+//		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
+//		mpv.loadAd();
+//		mpv.bringToFront();
+		
+		// Conversion tracking call
+//	    new MoPubConversionTracker().reportAppOpen(this);
+		
+		AdView adView = (AdView) this.findViewById(R.id.adview);
+		AdRequest adRequest = new AdRequest();
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
+		adView.loadAd(adRequest);
 	}
 
 	@Override

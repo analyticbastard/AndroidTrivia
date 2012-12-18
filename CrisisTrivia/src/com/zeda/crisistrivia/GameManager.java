@@ -3,6 +3,8 @@ package com.zeda.crisistrivia;
 import java.util.Collections;
 import java.util.Vector;
 
+import android.util.Log;
+
 
 public class GameManager {
 	private static GameManager manager = null;
@@ -124,6 +126,7 @@ public class GameManager {
 		if (getLevel() == LEVEL_FLASH & (getQuestionsAnswered() == QUESTIONS_LEVEL1
 				+ QUESTIONS_LEVEL2 + QUESTIONS_LEVEL3 + 1))
 			questionsLevelOK = 0;
+		Log.w("xx", "" + getQuestionsAnswered() + ":" + questionsLevelOK);
 	}
 	
 	public void resetGame() {
@@ -160,7 +163,7 @@ public class GameManager {
 				+ QUESTIONS_LEVEL3))
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2 
 					- questionsLevelOK) < FAIL_QUESTIONS_LEVEL3;
-		else if (getQuestionsAnswered() <= QUESTIONS_IN_GAME) {
+		else {
 			ok = (getQuestionsAnswered() - QUESTIONS_LEVEL1  - QUESTIONS_LEVEL2
 					- QUESTIONS_LEVEL3 - questionsLevelOK) 
 					< FAIL_QUESTIONS_FLASH;

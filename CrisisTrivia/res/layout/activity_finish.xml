@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:id="@+id/finishLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -94,5 +95,15 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>
+    
+    <com.google.ads.AdView
+        android:id="@+id/adviewfinish"
+        android:layout_width="fill_parent"
+        android:layout_height="100px"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="a150cf4c8c18117"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR, B3EEABB8EE11C2BE770B684D95219ECB" />
 
 </RelativeLayout>

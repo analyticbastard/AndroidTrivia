@@ -4,7 +4,8 @@ package com.zeda.crisistrivia;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.mopub.mobileads.MoPubView;
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,13 +25,16 @@ import android.widget.TextView;
 
 
 public class QuestionPanel extends Activity implements View.OnClickListener {
+	private final int TRANSITION_DELAY = 1500;
 
 	ImageView iv;
 	Timer timer = null;
 	final Animation animation = new AlphaAnimation(1, 0); 
 	// Change alpha from fully visible to invisible
 
-	MoPubView mpv = null;
+	//MoPubView mpv = null;
+	AdView adView = null;
+	AdRequest adRequest = null;
 	
 	
 	private abstract class AdapterClick implements View.OnClickListener {
@@ -66,7 +70,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			int left = Math.round((ll.getX() + b.getX() + (b.getWidth()/2) 
 					- (d.getIntrinsicWidth()/2)));
 			int top = Math.round((ll.getY() + b.getY() + (b.getHeight()/2) 
-					- (d.getIntrinsicHeight()/2))) + ll.getPaddingTop();
+					- (d.getIntrinsicHeight()/2)));
 			
 			iv.setImageDrawable(d);
 			//iv.setTranslationX(left);
@@ -77,8 +81,6 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			iv.setLayoutParams(lp);
 			iv.bringToFront();
 			iv.setVisibility(ImageView.VISIBLE);
-
-			questionpanel.showScore();
 			
 			GameManager.getManager().advanceQuestionsAnswered();
 		}
@@ -95,6 +97,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			super.onClick(arg0);
 			
 			GameManager.getManager().addPoints();
+
+			questionpanel.showScore();
 		}
 	}
 	
@@ -117,6 +121,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		    	btn = (Button) findViewById(R.id.answerButton3);
 		    
 		    btn.startAnimation(animation);
+
+			questionpanel.showScore();
 		}
 	}
 	
@@ -232,8 +238,14 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 
 		setContentView(R.layout.activity_questions);
 		
-		mpv = (MoPubView) findViewById(R.id.adviewQuestion);
-		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
+//		mpv = (MoPubView) findViewById(R.id.adviewQuestion);
+//		mpv.setAdUnitId("7febfd1244ca11e2bf1612313d143c11");
+		
+		adView = (AdView) this.findViewById(R.id.adviewQuestion);
+		adRequest = new AdRequest();
+		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
+		adView.loadAd(adRequest);
 		
 		Button tb = (Button) findViewById(R.id.transtitionButton1);
 		tb.setOnClickListener(this);
@@ -262,7 +274,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 	}
 	
 	public void showQuestion() {		
-		mpv.loadAd();
+		//mpv.loadAd();
+		adView.loadAd(adRequest);
 		
 		Question q = GameManager.getManager().getQuestion();
 		
@@ -329,13 +342,13 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		}
 			
 		// If we are at the end of a game
-		if (manager.getQuestionsAnswered() >= GameManager.QUESTIONS_IN_GAME - 1) {
+		if (manager.isGameFinished()) {
 			startFinishActivity();
 			return;
 		}
 		
 		timer = new Timer();
-		timer.schedule(new TransitionTask(this), 1000);
+		timer.schedule(new TransitionTask(this), TRANSITION_DELAY);
 	}
 	
 	@Override
