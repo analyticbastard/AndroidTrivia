@@ -7,6 +7,7 @@ import java.util.TimerTask;
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.zeda.crisistrivia.engine.GameManager;
+import com.zeda.crisistrivia.engine.Question;
 
 import android.app.Activity;
 import android.content.Intent;

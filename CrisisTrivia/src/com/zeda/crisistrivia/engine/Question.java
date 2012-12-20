@@ -1,4 +1,4 @@
-package com.zeda.crisistrivia;
+package com.zeda.crisistrivia.engine;
 
 import java.util.Collections;
 import java.util.Vector;
