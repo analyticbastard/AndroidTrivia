@@ -1,5 +1,7 @@
 package com.zeda.crisistrivia;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.zeda.crisistrivia.engine.Settings;
 import com.zeda.crisistrivia.mail.SendEmailAsyncTask;
 
@@ -98,6 +100,10 @@ public class EmailQuestionActivity extends Activity implements OnClickListener {
 		
 		Button send = (Button) findViewById(R.id.send);
 		send.setOnClickListener(new SendEmail(this));
+		
+		AdView adView = (AdView) this.findViewById(R.id.adviewemail);
+		AdRequest adRequest = new AdRequest();
+		adView.loadAd(adRequest);
 	}
 
 	@Override
