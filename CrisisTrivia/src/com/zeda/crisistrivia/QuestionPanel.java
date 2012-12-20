@@ -31,6 +31,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 
 	ImageView iv;
 	Timer timer = null;
+	CustomTimerTask ct = null;	
 	final Animation animation = new AlphaAnimation(1, 0); 
 	// Change alpha from fully visible to invisible
 
@@ -98,6 +99,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		public void onClick(View arg0) {
 			super.onClick(arg0);
 			
+			int timeLeft = CustomTimerTask.TIME_MAX - questionpanel.ct.progress;
+			GameManager.getManager().setTimeLeft(timeLeft);
 			GameManager.getManager().addPoints();
 
 			questionpanel.showScore();
@@ -327,7 +330,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		// Start timer here to timeout and to update progress bar
 		timer = new Timer();
-		CustomTimerTask ct = new CustomTimerTask(timer, this);
+		ct = new CustomTimerTask(timer, this);
 		timer.schedule(ct, 0, 500);
 	}
 	

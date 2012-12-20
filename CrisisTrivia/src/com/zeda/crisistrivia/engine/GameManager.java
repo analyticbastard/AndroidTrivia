@@ -48,6 +48,12 @@ public class GameManager {
 	private int questionsLevelOK = 0;
 	private int questionsOK = 0;
 	
+	private int timeLeft = 0;
+	
+	public void setTimeLeft(int timeLeft) {
+		this.timeLeft = timeLeft;
+	}
+	
 	public int getQuestionsOK() {
 		return questionsOK;
 	}
@@ -111,9 +117,15 @@ public class GameManager {
 	}
 	
 	public void addPoints() {
-		setTotalPoints(getTotalPoints() 
-				+ questions.get(getQuestionsAnswered() - 1).getDifficulty()
-				* MULTIPLIER);
+		if (getLevel()==LEVEL_FLASH)
+			setTotalPoints((int) Math.round(getTotalPoints() 
+					+ questions.get(getQuestionsAnswered() - 1).getDifficulty()
+					* MULTIPLIER * 
+					( Math.exp( ((float) timeLeft) / QUESTION_TIME ) ) ));
+		else
+			setTotalPoints(getTotalPoints() 
+					+ questions.get(getQuestionsAnswered() - 1).getDifficulty()
+					* MULTIPLIER);		
 		
 		questionsLevelOK++;
 		questionsOK++;

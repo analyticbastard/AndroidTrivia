@@ -31,6 +31,7 @@
     <string name="title_activity_help">HelpActivity</string>
     <string name="text_activity_help">Crisis Trivia is a game divided into levels, the further you get, the more difficult it is.\nLevel 1 is composed of 4 questions, level 2 of 3 questions, level 3 of 2 questions, and then there is a flash level with a question drawn from each of the three difficulty levels.\nYou can fail up to two out of four questions in level 1, two out of three questions in level 2, one question out of two in level 3, and lastly one question out of three in the flash level.\nIf you feel there should be a question important enough for your co-citizens to know, you can send it to me with the menu option so that it can be included in future versions.Please support this app by clicking on the ads or by purchasing the ad-free version.\nEnjoy!</string>
     <string name="menu_newquestion">Send new question</string>
+    <string name="menu_reset">Reset rank</string>
     <string name="menu_help">Help</string>
     <string name="title_activity_email_question">EmailQuestionActivity</string>
 

@@ -178,6 +178,11 @@ public class MainActivity extends Activity implements OnClickListener {
         	break;
         case R.id.menu_newquestion:
         	startEmailQuestionActivity();
+        	break;
+        case R.id.menu_reset:
+        	Settings.getSettings().resetRank();
+        	rewriteRank();
+        	break;
         }
         
         return super.onOptionsItemSelected(item);
@@ -186,6 +191,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// Return to main window: rewrite rank
+		rewriteRank();
+	}
+	
+	public void rewriteRank() {
 		String txt = settings.getName(0);
 		TextView tv = (TextView) findViewById(R.id.mainName1);
 		tv.setText(txt);

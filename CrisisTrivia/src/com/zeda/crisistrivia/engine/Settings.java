@@ -59,12 +59,7 @@ public class Settings {
 	}
 	
 	private Settings() {
-		GameRank gr = new GameRank("Alan Greenspan", new Date(), 10000);
-		gameRank.add(gr);
-		gr = new GameRank("Ben Bernanke", new Date(), 7500);
-		gameRank.add(gr);
-		gr = new GameRank("Paul Krugman", new Date(), 2500);
-		gameRank.add(gr);
+		createDummyRank();
 		
 		SharedPreferences settings = MainActivity.getInstance()
 				.getSharedPreferences(PREFS_NAME, 0);
@@ -101,6 +96,38 @@ public class Settings {
 	    		userName = name;
 	    	}
 	    }
+	}
+	
+	public void createDummyRank() {
+		gameRank.removeAllElements();
+		
+		GameRank gr = new GameRank("Alan Greenspan", new Date(), 10140);
+		gameRank.add(gr);
+		gr = new GameRank("Ben Bernanke", new Date(), 8560);
+		gameRank.add(gr);
+		gr = new GameRank("Paul Krugman", new Date(), 7060);
+		gameRank.add(gr);
+	}
+	
+	public void resetRank() {
+		createDummyRank();
+		
+		SharedPreferences settings = MainActivity.getInstance()
+				.getSharedPreferences(PREFS_NAME, 0);
+		
+		Editor editor = settings.edit();
+		
+		editor.clear();
+		editor.commit();
+		
+		editor.putString(EDITOR_NAME1, gameRank.get(0).getName());
+		editor.putInt(EDITOR_POINTS1, gameRank.get(0).getPoints());
+		editor.putString(EDITOR_NAME2, gameRank.get(1).getName());
+		editor.putInt(EDITOR_POINTS2, gameRank.get(1).getPoints());
+		editor.putString(EDITOR_NAME3, gameRank.get(2).getName());
+		editor.putInt(EDITOR_POINTS3, gameRank.get(2).getPoints());
+		
+		editor.apply();
 	}
 	
 	public void saveRank() {
