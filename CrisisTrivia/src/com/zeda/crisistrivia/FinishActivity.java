@@ -2,6 +2,7 @@ package com.zeda.crisistrivia;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
+import com.zeda.crisistrivia.engine.GameManager;
 import com.zeda.crisistrivia.engine.Settings;
 
 import android.os.Bundle;
@@ -29,10 +30,15 @@ public class FinishActivity extends Activity implements View.OnClickListener {
 		RelativeLayout rl = (RelativeLayout) findViewById(R.id.finishLayout);
 		rl.setOnClickListener(this);
 		
+		String score = getString(R.string.score_) + " " +
+				GameManager.getManager().getTotalPoints();
+		TextView tv = (TextView) findViewById(R.id.congratsText1);
+		tv.setText(tv.getText() + "\n" + score);
+		
 		settings = Settings.getSettings();
 		
 		String txt = settings.getName(0);
-		TextView tv = (TextView) findViewById(R.id.finishName1);
+		tv = (TextView) findViewById(R.id.finishName1);
 		tv.setText(txt);
 
 		txt = settings.getName(1);
