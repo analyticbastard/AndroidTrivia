@@ -151,7 +151,7 @@ public class Settings {
 			
 			name3 = name2;
 			name2 = name1;
-			name3 = userName;
+			name1 = userName;
 		} else if (points > points2) {
 			points3 = points2;
 			points2 = points;
