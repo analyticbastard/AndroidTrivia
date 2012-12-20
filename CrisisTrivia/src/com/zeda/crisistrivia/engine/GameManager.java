@@ -46,7 +46,12 @@ public class GameManager {
 	
 	private int questionsAnswered = 0;
 	private int questionsLevelOK = 0;
+	private int questionsOK = 0;
 	
+	public int getQuestionsOK() {
+		return questionsOK;
+	}
+
 	public int getTotalPoints() {
 		return totalPoints;
 	}
@@ -111,6 +116,7 @@ public class GameManager {
 				* MULTIPLIER);
 		
 		questionsLevelOK++;
+		questionsOK++;
 	}
 
 	public int getQuestionsAnswered() {
@@ -135,6 +141,7 @@ public class GameManager {
 		questionsAnswered = 0;
 		setTotalPoints(0);
 		questionsLevelOK = 0;
+		questionsOK = 0;
 		
 		getQuestionFromSource();
 	}

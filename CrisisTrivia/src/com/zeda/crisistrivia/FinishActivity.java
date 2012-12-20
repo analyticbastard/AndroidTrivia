@@ -32,8 +32,12 @@ public class FinishActivity extends Activity implements View.OnClickListener {
 		
 		String score = getString(R.string.score_) + " " +
 				GameManager.getManager().getTotalPoints();
+		String answered = getString(R.string.QuestionsNo) + " " +
+				GameManager.getManager().getQuestionsAnswered() + "\n" + 
+				getString(R.string.QuestionsOK)  + " " +
+				GameManager.getManager().getQuestionsOK();
 		TextView tv = (TextView) findViewById(R.id.congratsText1);
-		tv.setText(tv.getText() + "\n" + score);
+		tv.setText(tv.getText() + "\n" + score + "\n" + answered);		
 		
 		settings = Settings.getSettings();
 		
