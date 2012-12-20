@@ -13,35 +13,6 @@ import android.widget.EditText;
 
 public class EmailQuestionActivity extends Activity implements OnClickListener {
 	
-	
-//	private class NetworkSendEmail extends TimerTask {
-//		String statement, a1, a2, a3;
-//		
-//		public NetworkSendEmail(String st, String aw1, String aw2, String aw3) {
-//			statement = st;
-//			a1 = aw1;
-//			a2 = aw2;
-//			a3 = aw3;
-//		}
-//		
-//		@Override
-//		public void run() {
-//			GMailSender sender = new GMailSender("albrecht.allenstein", "megazeda");
-//			try {
-//				sender.sendMail("new question",
-//						"Statement: " + statement + "\n" +
-//								"A1: " + a1 + "A2: " + a2 + "A3: " + a3,							
-//						"albrecht.allenstein@gmail.com",
-//						"albrecht.allenstein@gmail.com");
-//			} catch (Exception e) {
-//				Log.w("ZZZ", "" + e.getMessage());
-//				// Do nothing to upset the user. He would be annoyed if he finds
-//				// out the effort of writing everything down went to waste
-//			}
-//		}
-//		
-//	}
-	
 	private class SendEmail implements OnClickListener {
 		EmailQuestionActivity emailquestionactivity = null;
 		
@@ -108,7 +79,7 @@ public class EmailQuestionActivity extends Activity implements OnClickListener {
 			}
 
 			String body = "Statement: " + statement + "\n" + "A1: " + 
-					a1 + "A2: " + a2 + "A3: " + a3;
+					a1 + "\nA2: " + a2 + "\nA3: " + a3;
 			new SendEmailAsyncTask(body, 
 					Settings.getSettings().getUserName()).execute();
 			
