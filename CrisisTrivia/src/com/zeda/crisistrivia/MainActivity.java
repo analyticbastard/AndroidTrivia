@@ -3,11 +3,15 @@ package com.zeda.crisistrivia;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
+import com.zeda.crisistrivia.database.QuestionDataSource;
+import com.zeda.crisistrivia.engine.GameManager;
+import com.zeda.crisistrivia.engine.Settings;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -76,6 +80,26 @@ public class MainActivity extends Activity implements OnClickListener {
 		intent.setClassName(packageName, className);
 		startActivityForResult(intent, ACTIVITY_FINISH);
 	}
+	
+	public void startHelpActivity() {
+		Intent intent = new Intent();
+		String packageName =
+				"com.zeda.crisistrivia";
+		String className =
+				"com.zeda.crisistrivia.HelpActivity";
+		intent.setClassName(packageName, className);
+		startActivityForResult(intent, ACTIVITY_FINISH);
+	}
+	
+	public void startEmailQuestionActivity() {
+		Intent intent = new Intent();
+		String packageName =
+				"com.zeda.crisistrivia";
+		String className =
+				"com.zeda.crisistrivia.EmailQuestionActivity";
+		intent.setClassName(packageName, className);
+		startActivityForResult(intent, ACTIVITY_FINISH);
+	}
 
 	@Override
 	public void onClick(View v) {
@@ -132,8 +156,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		AdView adView = (AdView) this.findViewById(R.id.adview);
 		AdRequest adRequest = new AdRequest();
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
-		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
+//		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+//		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
 		adView.loadAd(adRequest);
 	}
 
@@ -143,6 +167,21 @@ public class MainActivity extends Activity implements OnClickListener {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+        case R.id.menu_help:
+        	startHelpActivity();
+        	break;
+        case R.id.menu_newquestion:
+        	startEmailQuestionActivity();
+        }
+        
+        return super.onOptionsItemSelected(item);
+    }
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {

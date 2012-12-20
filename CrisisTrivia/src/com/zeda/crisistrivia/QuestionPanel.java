@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
+import com.zeda.crisistrivia.engine.GameManager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -243,8 +244,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		adView = (AdView) this.findViewById(R.id.adviewQuestion);
 		adRequest = new AdRequest();
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
-		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
+//		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+//		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
 		adView.loadAd(adRequest);
 		
 		Button tb = (Button) findViewById(R.id.transtitionButton1);
@@ -307,10 +308,6 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		button1.setText(q.getAnswer1());
 		button2.setText(q.getAnswer2());
 		button3.setText(q.getAnswer3());
-		
-		button1.setTextSize(16);
-		button2.setTextSize(16);
-		button3.setTextSize(16);
 		
 		TextView tv = (TextView) findViewById(R.id.questionText);
 		tv.setText(q.getStatement());

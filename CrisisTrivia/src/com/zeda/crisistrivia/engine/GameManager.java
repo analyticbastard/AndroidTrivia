@@ -1,7 +1,10 @@
-package com.zeda.crisistrivia;
+package com.zeda.crisistrivia.engine;
 
 import java.util.Collections;
 import java.util.Vector;
+
+import com.zeda.crisistrivia.Question;
+import com.zeda.crisistrivia.database.QuestionDataSource;
 
 import android.util.Log;
 

@@ -7,7 +7,7 @@
     android:background="#000000"
     android:clickable="true"
     tools:context=".HelpActivity" >
-
+    
     <com.google.ads.AdView
     android:id="@+id/adviewHelp"
     android:layout_width="fill_parent"
@@ -16,7 +16,7 @@
     ads:adSize="BANNER"
     ads:adUnitId="a150cf4c8c18117"
     ads:loadAdOnCreate="true" />
-    
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,6 +24,6 @@
         android:layout_centerVertical="true"
         android:text="@string/text_activity_help"
         android:textColor="#CCCCCC"
-        android:textSize="18sp" />
+        android:textSize="40sp" />
 
 </RelativeLayout>

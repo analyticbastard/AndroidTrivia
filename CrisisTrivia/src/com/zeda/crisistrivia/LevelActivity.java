@@ -5,6 +5,7 @@ import java.util.TimerTask;
 
 import com.google.ads.AdRequest;
 import com.google.ads.AdView;
+import com.zeda.crisistrivia.engine.GameManager;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -53,8 +54,8 @@ public class LevelActivity extends Activity implements View.OnClickListener {
 		
 		AdView adView = (AdView) this.findViewById(R.id.adviewlevel);
 		AdRequest adRequest = new AdRequest();
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
-		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
+//		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+//		adRequest.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
 		adView.loadAd(adRequest);
 		
 		if (GameManager.getManager().getLevel() == GameManager.LEVEL3) {

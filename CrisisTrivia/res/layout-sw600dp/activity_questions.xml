@@ -16,15 +16,14 @@
     android:id="@+id/adviewQuestion"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
     ads:adSize="BANNER"
     ads:adUnitId="a150cf4c8c18117"
     ads:loadAdOnCreate="true" />
 
     <ImageView
         android:id="@+id/floatingMark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
         android:src="@drawable/right"
@@ -46,16 +45,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="50dp"
+            android:paddingTop="40dp"
             android:text="@string/score_"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/transtitionButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/next_question" />
+            android:height="100dp"
+            android:text="@string/next_question"
+            android:textSize="30sp" />
         
         <com.zeda.crisistrivia.VerticalTextView
             style="@style/verticalTextStyle"
@@ -63,7 +65,8 @@
             android:layout_height="wrap_content"
             android:gravity="bottom|right"
             android:text="@string/support_string"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="30sp" />
 
     </FrameLayout>
 
@@ -86,10 +89,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:maxHeight="300dp"
+            android:maxHeight="600dp"
             android:text="@string/question"
             android:textColor="@android:color/primary_text_dark_nodisable"
-            android:textSize="16sp"
+            android:textSize="36sp"
             app:tools="HardcodedText" />
 
         <LinearLayout
@@ -99,38 +102,39 @@
             android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp"
             android:orientation="vertical"
-            android:paddingBottom="5dp"
-            android:paddingTop="10dp" >
+            android:paddingBottom="10dp"
+            android:paddingTop="20dp" >
 
             <Button
                 android:id="@+id/answerButton1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="38sp"
+                android:layout_marginTop="38dp"
                 android:background="@android:color/transparent"
                 android:text="@string/answer1"
                 android:textColor="@android:color/primary_text_dark"
-                android:textSize="16sp" />
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/answerButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="38sp"
+                android:layout_marginTop="38dp"
                 android:background="@android:color/transparent"
                 android:text="@string/answer2"
                 android:textColor="@android:color/primary_text_dark"
-                android:textSize="16sp" />
+                android:textSize="30sp" />
 
             <Button
                 android:id="@+id/answerButton3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="38sp"
+                android:layout_marginTop="38dp"
                 android:background="@android:color/transparent"
                 android:text="@string/answer3"
                 android:textColor="@android:color/primary_text_dark"
-                android:textSize="16sp" />
+                android:textSize="30sp" />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -1,4 +1,4 @@
-package com.zeda.crisistrivia;
+package com.zeda.crisistrivia.database;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collections;
 import java.util.Vector;
+
+import com.zeda.crisistrivia.Question;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -121,18 +123,18 @@ public class QuestionDataSource {
 
 		}
 
-		/***
-		 * Method for Copy the database from asset directory to application's
-		 * data directory
-		 * 
-		 * @param databaseName
-		 *            : database name
-		 * @throws IOException
-		 *             : exception if file does not exists
-		 */
-		private void copyDataBase(String databaseName) throws IOException {
-			copyDataBase(context, databaseName);
-		}
+//		/***
+//		 * Method for Copy the database from asset directory to application's
+//		 * data directory
+//		 * 
+//		 * @param databaseName
+//		 *            : database name
+//		 * @throws IOException
+//		 *             : exception if file does not exists
+//		 */
+//		private void copyDataBase(String databaseName) throws IOException {
+//			copyDataBase(context, databaseName);
+//		}
 
 		/***
 		 * Static method for copy the database from asset directory to
@@ -224,16 +226,16 @@ public class QuestionDataSource {
 			return checkDB != null ? true : false;
 		}
 
-		/***
-		 * Method that returns database path in the application's data directory
-		 * 
-		 * @param databaseName
-		 *            : database name
-		 * @return : complete path
-		 */
-		private String getDatabasePath(String databaseName) {
-			return getDatabasePath(context, databaseName);
-		}
+//		/***
+//		 * Method that returns database path in the application's data directory
+//		 * 
+//		 * @param databaseName
+//		 *            : database name
+//		 * @return : complete path
+//		 */
+//		private String getDatabasePath(String databaseName) {
+//			return getDatabasePath(context, databaseName);
+//		}
 
 		/***
 		 * Static Method that returns database path in the application's data

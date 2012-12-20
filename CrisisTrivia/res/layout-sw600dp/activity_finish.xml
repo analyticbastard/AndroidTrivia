@@ -16,7 +16,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:text="@string/congratulations"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48sp" />
 
     <TextView
         android:id="@+id/textView1"
@@ -26,7 +27,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp"
         android:text="Rank"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48sp" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -44,35 +46,17 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
             android:text="10000"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/finishName3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="90dp"
-            android:text="Paul Krugman"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/finishName1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/finishName2"
             android:layout_alignParentLeft="true"
             android:text="Alan Greenspan"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/finishName2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/finishPoints1"
-            android:layout_marginTop="24dp"
-            android:text="Ben Bernanke"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/finishPoints2"
@@ -82,7 +66,8 @@
             android:layout_alignBottom="@+id/finishName2"
             android:layout_alignLeft="@+id/finishPoints1"
             android:text="7550"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/finishPoints3"
@@ -92,14 +77,36 @@
             android:layout_alignBottom="@+id/finishName3"
             android:layout_alignRight="@+id/finishPoints2"
             android:text="5250"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/finishName3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/finishName2"
+            android:layout_marginTop="68dp"
+            android:text="Paul Krugman"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/finishName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/finishPoints1"
+            android:layout_marginTop="68dp"
+            android:text="Ben Bernanke"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="40sp" />
 
     </RelativeLayout>
     
     <com.google.ads.AdView
         android:id="@+id/adviewfinish"
         android:layout_width="fill_parent"
-        android:layout_height="100px"
+        android:layout_height="300dp"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
         ads:adUnitId="a150cf4c8c18117"

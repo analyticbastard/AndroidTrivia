@@ -37,22 +37,23 @@
 
 <!--         android:layout_above="@+id/buttonResume" -->
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="fill_parent"
+        android:layout_height="260dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/rank"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FFFFFF" />
+        android:layout_marginTop="40dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo" />
 
     <RelativeLayout
         android:id="@+id/mainPointsLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="120dp"
+        android:layout_height="200dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1" >
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="28dp" >
 
         <TextView
             android:id="@+id/mainPoints1"
@@ -63,7 +64,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="16dp"
             android:text="10000"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/mainName2"
@@ -73,7 +75,8 @@
             android:layout_below="@+id/mainName1"
             android:layout_marginTop="18dp"
             android:text="Ben Bernanke"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/mainName3"
@@ -83,7 +86,8 @@
             android:layout_below="@+id/mainName2"
             android:layout_marginTop="16dp"
             android:text="Paul Krugman"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/mainName1"
@@ -93,7 +97,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="18dp"
             android:text="Alan Greenspan"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/mainPoints2"
@@ -102,7 +107,8 @@
             android:layout_above="@+id/mainName3"
             android:layout_alignRight="@+id/mainPoints1"
             android:text="7550"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/mainPoints3"
@@ -112,19 +118,10 @@
             android:layout_alignBottom="@+id/mainName3"
             android:layout_alignLeft="@+id/mainPoints2"
             android:text="5250"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30sp" />
 
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="fill_parent"
-        android:layout_height="180dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/buttonStart"
@@ -133,9 +130,22 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/mainPointsLayout1"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="51dp"
         android:text="@string/start_new_game"
         android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white" />
+        android:textColorHint="@android:color/white"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:text="@string/rank"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp" />
 
 </RelativeLayout>

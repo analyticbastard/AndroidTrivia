@@ -1,7 +1,9 @@
-package com.zeda.crisistrivia;
+package com.zeda.crisistrivia.engine;
 
 import java.util.Date;
 import java.util.Vector;
+
+import com.zeda.crisistrivia.MainActivity;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -182,7 +184,7 @@ public class Settings {
 		return gameRank.get(position).getPoints();
 	}
 	
-	public String getUserName(int position) {
+	public String getUserName() {
 		return userName;
 	}
 	
