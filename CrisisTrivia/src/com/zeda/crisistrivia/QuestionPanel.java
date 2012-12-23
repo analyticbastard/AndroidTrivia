@@ -258,7 +258,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		FrameLayout fl = (FrameLayout) findViewById(R.id.transitionLayout1);
 		fl.setVisibility(View.INVISIBLE);
 		
-	    animation.setDuration(50); 
+	    animation.setDuration(200); 
 	    animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
 	    animation.setRepeatCount(7); 
 	    animation.setRepeatMode(Animation.REVERSE);
