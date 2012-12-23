@@ -25,7 +25,7 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,What is a company bond?,,"Company-issued debt, payable in a fixed time, and bearing periodic payments called coupons","A title grating ownership of a part of the company, entitling asset possesion upon liquidation","A title grating ownership of a part of the company, possible entitling to periodic dividends"
 10,The red color of some pieces of gold comes from. . .,krugerrand1,A high amout of copper in the alloy,A high amout of bronze in the alloy,When the purity is less than 925
 10,What is the secondary market?,,A market where private owners may sell their entitlements to willing buyers,A market where only second quality assets may be sold,A market where subprime assets are tradeable
-10,This picture refers to the misery coming from. . .,,Hiper-inflationary monatary policies,The Franco-prussian war,Industrial recession in the US
+10,This picture refers to the misery coming from. . .,weimar1,Hiper-inflationary monatary policies,The Franco-prussian war,Industrial recession in the US
 10,Who is the president of the European Central Bank as of 2013,,Mario Draghi,Jean-Claude Trichet,Herman Van Rompuy
 10,Bearings bank was collapsed by what famous rogue trader?,,Nick Leeson,Jerome Kerviel,Marc Faber
 10,Which one of these traders was accused of losing 4900 million euro in 2008?,,Jerome Kerviel,Nick Leeson,Mohamed El-Erian
@@ -45,7 +45,7 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,What was the gold ounce price change after F. D. Roosevelt banned the hoarding of gold bullion?,,From $20.69 to $35,From $35 to $29.69,From $35 to $235
 10,How much has the gold ounce price increased since Nixon closed the gold window?,,From $35 to $1715 as of Dec. 2012,From $29.69 to $1715 as of Dec. 2012,From $235 to $1715
 10,Who is Herman van Rompuy?,,The president of the European Union,A former president of the European Central Bank,The president of the European Commission
-10,"Apart from Latin America, the Spanish ""Real de a 8"" silver coin was used. . .",8reales1,"In the United States and China, where they were engraved with an imperial seal","In the United States and Japan, were they were engraved with the imperial seal",In the French colonies and Quebec
+10,"Apart from Latin America, the Spanish ""Real de a 8"" silver coin was used. . .",reales1,"In the United States and China, where they were engraved with an imperial seal","In the United States and Japan, were they were engraved with the imperial seal",In the French colonies and Quebec
 10,"Why was the gold standard removed, after centuries of monetary stability?",,European powers needed to finance the costs of WWI,Banks' reserves ran low,It was an issue resolved in the Bismarck conference
 10,Why did the US ended the Bretton Woods Accords of 1944?,,The Nixon administration was unable to honor the agreement of handing over 1 ounce of gold at $35,The Warsaw pact didn't fulfill their end,The international speculator was attacking the Dollar
 10,Why did foreign countries withdraw tons of gold at $35 per ounce at the NY Fed in 1971?,,Governments were fearful that the US was financing the Vietnam costs at their expense,Governments opposed Napalm attacks against civil population,Governents were threatened by the USSR
@@ -76,7 +76,7 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,What is Technical Analysis?,,Forecasting the direction of prices through the study of past market data,Forecasting the direction of prices based on mathematical techniques,Quantitative management of portfolio
 10,What is Fundamental Analysis?,,Forecasting the direction of prices based on a company's circumstances and macroeconomic variables,Forecasting the direction of prices based on mathematical techniques,Amalysis of the conformity of a bank books to the applicable law
 10,The 2010 campaign by TV host Max Kaiser consisted of. . .,,Hold possession of physical silver either by buying bullion or taking delivery,Hold possession of physical gold either by buying bullion or taking delivery,Buying up the metals futures market
-10,Which bank was the target of the 2010 Max Kaiser's campaign?,,JP Morgan Chase,Scotia Moccata,Goldman Sachs
+10,Which bank was the target of the 2010 Max Kaiser's campaign?,,JP Morgan Chase,Scotiamocatta,Goldman Sachs
 10,Who was a pioneering mathematical investor?,,Ed Thorp,Blythe Masters,Lawrence Livermore
 10,What is Fanny Mae?,,A mortgate brokerage,A bank,An insurance broker
 10,What is AIG?,,An insurance broker,American Insurance Group,A bank
@@ -92,8 +92,8 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,What does QE stand for?,,Quantitative Easing,Quantitative Economics,Quadratic Extension
 10,What is PIMCO?,,The largest active global fixed income managers in the world,A Japanese morgage brokerage,A hedge fund
 10,Who are the two best known partners at PIMCO?,,Bill Gross and Muhammed El-Erian,Jim Rogers and Marc Faber,Lawrence Livermore and Nathan Rothschild
-10,Who is this person?,papandeou1,Papandeou,Papademos,Herman Van Rompuy
-10,Who is this person?,barroso1,Durao-Barroso,Papademos,Herman Van Rompuy
+10,Who is this person?,papandeou1,Georgios Papandeou,J. M. Durao-Barroso,Herman Van Rompuy
+10,Who is this person?,barroso1,Jose M. Durao-Barroso,Lukanikos Papademos,Herman Van Rompuy
 10,Who is this person?,merkel1,Angela Merkel,Blythe Masters,Christine Lagarde
 10,What is the SEC?,,An agency that regulates and enforces federal laws in the securities industry,A hedge fund,An exchange
 10,What does SEC stand for?,,Securities and Exchanges Commision,Silver Exchange Corporation,Secure Electronic Connections
@@ -141,7 +141,7 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,What does Brent oil mean?,,Oil pumped from the Norwegian North Sea coast,Oil mixed with heavy sands,Oil from the OPEC
 10,What is the oil that sets gas prices in Europe?,,Brent oil,OPEC oil,WTI oil
 10,Brent oil contracts are traded. . .,,In London and priced in dollars,In London and priced in pounds sterling,In New York City and priced in dollars
-10,"What can I pick up in Cushing, Ocklahoma?",,WTI barrels,Live cattle,Wheat bushels
+10,"What can I pick up in Cushing, Oklahoma?",,WTI barrels,Live cattle,Wheat bushels
 10,Where is the strait of Hormuz?,,In the Persial gulf,In Southern Spain,In Northern Iran
 10,What is the OPEC?,,An oil cartel composed mostly of Arab nations with headquartes in Vienna,An oil company,An oil cartel with headquartes in Qatar
 10,"Who said ""I believe that banking institutions are more dangerous to our liberties than standing armies""?",,Thomas Jefferson,Benjamin Franklin,John Adams
@@ -149,6 +149,12 @@ Difficulty,Statement,Image,Answer1,Answer2,Answer3
 10,"In his speech against the 1809 recharter of the First Bank, Thomas Jefferson said. . .",,"The issuing power should be taken from the banks and restored to the people, to whom it properly belongs",I believe that banking institutions are more dangerous to our liberties than standing armies,"Congress was given the reight to issue paper money themselves, not to delegate it to individuals or corporations"
 10,"Who said ""Issue of currency should be lodged with the government and be protected from domination by Wall Street""?",,Theodore Roosevelt,James Madison,Benjamin Franklin
 10,"Who said ""If congress has the right under the Constitution to issue paper money, it was  given them to use themselves, not to be delegated to individuals or corporations""?",,Andrew Jackson,James Madison,Thomas Jefferson
-10,"The words ""I am a most unhappy man. I have unwittingly ruined my country…"" were written by. . .",,Woodrow Wilson,Theodor Roosevelt,Franklin D. Roosevelt
+10,"The words ""I am a most unhappy man. I have unwittingly ruined my country"" were written by. . .",,Woodrow Wilson,Theodor Roosevelt,Franklin D. Roosevelt
 10,Who is this person?,madoff1,Bernard Madoff,Lloyd Blankfein,John Corzine
-10,"Who said ""Money has no motherland; financiers are without patriotism and without decency; their sole object is gain""?",,Napoleon Bonaparte,Thomas Jefferson,Benjamin Franklin
+10,What is true about the prize popularly known as the Nobel price of economics?,,It is not a Nobel prize,It has the same statutory regime as the rest of the prices,It is given at the same ceremony as the rest of the prices
+10,The prize popularly known as the Nobel price of economics. . .,,was created by the Swedish central bank,was created by Alfred Nobel,was created by Milton Friedman
+10,Gold is the money of. . .,,Kings,Gentlemen,Gypsies
+10,SEK refers to. . .,,The Swedish currency,Stock Exchange Kyoto,The Russian central bank
+10,The Swedish currency collapsed in. . .,,1992,1890,2008
+10,The current central bank is Sweden was granted monetary authority since. . .,,1897,1919,1921
+10,Nomura is the largest bank of. . .,,Japan,China,Taiwan

@@ -34,9 +34,9 @@ public class QuestionDataSource {
 	public static final String COLUMN_ANSWER2 = "Answer2";
 	public static final String COLUMN_ANSWER3 = "Answer3";
 
-	public static final int MAX_QUESTIONS_LEVEL1 = 153;
-	public static final int MAX_QUESTIONS_LEVEL2 = 72;
-	public static final int MAX_QUESTIONS_LEVEL3 = 32;
+	public static final int MAX_QUESTIONS_LEVEL1 = 159;
+	public static final int MAX_QUESTIONS_LEVEL2 = 81;
+	public static final int MAX_QUESTIONS_LEVEL3 = 36;
 
 	private static QuestionDataSource source;
 
