@@ -11,6 +11,8 @@ import com.zeda.crisistrivia.engine.Question;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -360,12 +362,20 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		if (q.getImageID() != null) {
 			int id = getResources().getIdentifier(getPackageName() 
 					+ ":drawable/" + q.getImageID(), null, null);
+			Drawable dr = getResources().getDrawable(id);
+			Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
+			// Scale it to 50 x 50
+			Drawable d = new BitmapDrawable(getResources(), 
+					Bitmap.createScaledBitmap(bitmap, 50, 50, true));
+			// Set your new, scaled drawable "d"
 			if (id>0) {
-				tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, id);
+				// tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, id);
+				tv.setCompoundDrawablesRelative(null, null, null, d);
 			}
 		} else {
 			// Necessary to remove any previous drawn image
-			tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+			// tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+			tv.setCompoundDrawablesRelative(null, null, null, null);
 		}
 		
 		FrameLayout fl = (FrameLayout) findViewById(R.id.transitionLayout1);

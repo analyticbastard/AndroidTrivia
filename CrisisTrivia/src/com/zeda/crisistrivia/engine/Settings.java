@@ -89,8 +89,12 @@ public class Settings {
 	    accountManager.getAccountsByType("com.google");
 
 	    if (accounts.length > 0) {
+	    	try {
 	    	name = accountManager.getUserData(accounts[0], 
 	    			AccountManager.KEY_ACCOUNT_NAME);
+	    	} catch (Exception e) {
+	    		// Log
+	    	}
 
 	    	if (name != null) {
 	    		userName = name;
