@@ -25,7 +25,14 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
+/**
+ * QuestionPanel
+ * 
+ * Activity that hold the Question view
+ * 
+ * @author Gabo
+ *
+ */
 public class QuestionPanel extends Activity implements View.OnClickListener {
 	private final int TRANSITION_DELAY = 1500;
 
@@ -40,6 +47,10 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 	AdRequest adRequest = null;
 	
 	
+	/*
+	 * Abstract class to perform a click on any of the answer buttons
+	 * disregarding whether it is the correct answer or not
+	 */
 	private abstract class AdapterClick implements View.OnClickListener {
 		QuestionPanel questionpanel;
 
@@ -69,6 +80,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			
 			ImageView iv = questionpanel.getIv();
 			
+			// Get the center of the button that was clicked to compute the
+			// left and top offsets for the image to be painted
 			LinearLayout ll = (LinearLayout) findViewById(R.id.answersLayout);
 //			int left = Math.round((ll.getX() + b.getX() + (b.getWidth()/2) 
 //					- (d.getIntrinsicWidth()/2)));
@@ -81,20 +94,27 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 					+ b.getTop() + (b.getHeight()/2) 
 					- (d.getIntrinsicHeight()/2)));
 			
+			// Get the dimensions of the image to be painted (either OK or Wrong)
 			iv.setImageDrawable(d);
 			//iv.setTranslationX(left);
 			//iv.setTranslationY(top);
 			LayoutParams lp = new LayoutParams(d.getIntrinsicWidth(), 
 					d.getIntrinsicHeight());
+			
+			// Paint the image over the pressed button
 			lp.setMargins(left, top, 0, 0);
 			iv.setLayoutParams(lp);
 			iv.bringToFront();
 			iv.setVisibility(ImageView.VISIBLE);
 			
+			// Increase answers counter
 			GameManager.getManager().advanceQuestionsAnswered();
 		}
 	}
 	
+	/*
+	 * Class to attach as adapted click for the correct answer
+	 */
 	private class AdapterRight extends AdapterClick {		
 		protected AdapterRight(QuestionPanel qp, Button _b, Button _bo1, Button _bo2) {
 			super(qp, _b, _bo1, _bo2, 
@@ -103,16 +123,20 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		@Override
 		public void onClick(View arg0) {
-			super.onClick(arg0);
+			super.onClick(arg0);			
 			
+			// Update score
 			int timeLeft = CustomTimerTask.TIME_MAX - questionpanel.ct.progress;
 			GameManager.getManager().setTimeLeft(timeLeft);
 			GameManager.getManager().addPoints();
 
-			questionpanel.showScore();
+			questionpanel.showScore(); // Can't place it at the superclass
 		}
 	}
 	
+	/*
+	 * Class to attach as adapted click for the wrong answers
+	 */
 	private class AdapterWrong extends AdapterClick {		
 		protected AdapterWrong(QuestionPanel qp, Button _b, Button _bo1, Button _bo2) {
 			super(qp, _b, _bo1, _bo2,
@@ -125,6 +149,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			
 			super.onClick(arg0);
 		    
+			// Guess the right button to make it blink
 		    Button btn = (Button) findViewById(R.id.answerButton1);
 		    if (q.getOk() == 2)
 		    	btn = (Button) findViewById(R.id.answerButton2);
@@ -133,12 +158,14 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		    
 		    btn.startAnimation(animation);
 
-			questionpanel.showScore();
+			questionpanel.showScore(); // Can't place it at the superclass
 		}
 	}
 	
 
-		
+	/*
+	 * Update the timer to awnser the question
+	 */
 	private class CustomTimerTask extends TimerTask {
 		private static final int TIME_MAX = GameManager.QUESTION_TIME;
 		
@@ -195,18 +222,22 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 				timer.cancel();
 				timer.purge();
 				
+				// It essentially behaves like presing a wrong button
 				Question q = GameManager.getManager().getQuestion();
 				uitask.setQuestion(q);
 
 				GameManager.getManager().advanceQuestionsAnswered();
 				
+				// No timer can manager UI tasks (only the UI thread can)
 				questionpanel.runOnUiThread(uitask);
 			}
 		}
 		
 	}
 	
-	
+	/*
+	 * Shows the transparent screen with the score
+	 */
 	private class TransitionTask extends TimerTask {
 		QuestionPanel questionpanel;
 		
@@ -236,13 +267,13 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 
 		@Override
 		public void run() {
+			// No timer can manager UI tasks (only the UI thread can)
 			questionpanel.runOnUiThread(new UITransitionTask());
 		}		
 	}
 	
 	
-	
-	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -319,6 +350,11 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		button2.setText(q.getAnswer2());
 		button3.setText(q.getAnswer3());
 		
+		// One-line answers are difficult to be clicked on
+		button1.setMinLines(1);
+		button2.setMinLines(1);
+		button3.setMinLines(1);
+		
 		TextView tv = (TextView) findViewById(R.id.questionText);
 		tv.setText(q.getStatement());
 		if (q.getImageID() != null) {
@@ -328,6 +364,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 				tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, id);
 			}
 		} else {
+			// Necessary to remove any previous drawn image
 			tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 		}
 		
@@ -383,6 +420,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			return;
 		}
 		
+		// If we are changing the level, show this activity
 		if ((manager.getQuestionsAnswered() == GameManager.QUESTIONS_LEVEL1)
 				| (manager.getQuestionsAnswered() == 
 				GameManager.QUESTIONS_LEVEL1 + 
