@@ -367,7 +367,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			Display display = getWindowManager().getDefaultDisplay();
 			Point size = new Point();
 			display.getSize(size);
-			int dh = size.y;
+			int dh = size.y,
+				dw = size.x;
 			
 			int id = getResources().getIdentifier(getPackageName() 
 					+ ":drawable/" + q.getImageID(), null, null);
@@ -375,10 +376,10 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			Bitmap  bitmap = ((BitmapDrawable) dr).getBitmap();
 			int  	h = bitmap.getHeight(),
 					w = bitmap.getWidth();
-			double  ratiohw = ((double) h)/((double) w),
-					ratiowh = ((double) w)/((double) h);
+			double  ratiowh = ((double) w)/((double) h);
+
+			int height = (int) Math.min(Math.round(SCREEN_IMAGE_PERCENTAGE * dh ), dw);
 			int width  = (int) Math.round(SCREEN_IMAGE_PERCENTAGE * dh * ratiowh);
-			int height = (int) Math.round(SCREEN_IMAGE_PERCENTAGE * dh );
 			Drawable d = new BitmapDrawable(getResources(), 
 					Bitmap.createScaledBitmap(bitmap, width, height, true));
 			// Set your new, scaled drawable "d"
