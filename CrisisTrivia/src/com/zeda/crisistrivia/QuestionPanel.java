@@ -70,9 +70,15 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			ImageView iv = questionpanel.getIv();
 			
 			LinearLayout ll = (LinearLayout) findViewById(R.id.answersLayout);
-			int left = Math.round((ll.getX() + b.getX() + (b.getWidth()/2) 
+//			int left = Math.round((ll.getX() + b.getX() + (b.getWidth()/2) 
+//					- (d.getIntrinsicWidth()/2)));
+//			int top = Math.round((ll.getY() + b.getY() + (b.getHeight()/2) 
+//					- (d.getIntrinsicHeight()/2)));
+			int left = Math.round((ll.getLeft() 
+					+ b.getLeft() + (b.getWidth()/2) 
 					- (d.getIntrinsicWidth()/2)));
-			int top = Math.round((ll.getY() + b.getY() + (b.getHeight()/2) 
+			int top = Math.round((ll.getTop()  
+					+ b.getTop() + (b.getHeight()/2) 
 					- (d.getIntrinsicHeight()/2)));
 			
 			iv.setImageDrawable(d);
