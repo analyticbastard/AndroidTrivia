@@ -12,9 +12,11 @@ import com.zeda.crisistrivia.engine.Question;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -37,6 +39,8 @@ import android.widget.TextView;
  */
 public class QuestionPanel extends Activity implements View.OnClickListener {
 	private final int TRANSITION_DELAY = 1500;
+	
+	public static final double SCREEN_IMAGE_PERCENTAGE = 0.35;
 
 	ImageView iv;
 	Timer timer = null;
@@ -353,29 +357,39 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		button3.setText(q.getAnswer3());
 		
 		// One-line answers are difficult to be clicked on
-		button1.setMinLines(1);
-		button2.setMinLines(1);
-		button3.setMinLines(1);
+		button1.setMinLines(2);
+		button2.setMinLines(2);
+		button3.setMinLines(2);
 		
 		TextView tv = (TextView) findViewById(R.id.questionText);
 		tv.setText(q.getStatement());
 		if (q.getImageID() != null) {
+			Display display = getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			int dh = size.y;
+			
 			int id = getResources().getIdentifier(getPackageName() 
 					+ ":drawable/" + q.getImageID(), null, null);
 			Drawable dr = getResources().getDrawable(id);
-			Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
-			// Scale it to 50 x 50
+			Bitmap  bitmap = ((BitmapDrawable) dr).getBitmap();
+			int  	h = bitmap.getHeight(),
+					w = bitmap.getWidth();
+			double  ratiohw = ((double) h)/((double) w),
+					ratiowh = ((double) w)/((double) h);
+			int width  = (int) Math.round(SCREEN_IMAGE_PERCENTAGE * dh * ratiowh);
+			int height = (int) Math.round(SCREEN_IMAGE_PERCENTAGE * dh );
 			Drawable d = new BitmapDrawable(getResources(), 
-					Bitmap.createScaledBitmap(bitmap, 50, 50, true));
+					Bitmap.createScaledBitmap(bitmap, width, height, true));
 			// Set your new, scaled drawable "d"
 			if (id>0) {
 				// tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, id);
-				tv.setCompoundDrawablesRelative(null, null, null, d);
+				//tv.setCompoundDrawablesRelative(null, null, null, dr);
+				tv.setCompoundDrawablesWithIntrinsicBounds(null, null, null, d);
 			}
 		} else {
 			// Necessary to remove any previous drawn image
-			// tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-			tv.setCompoundDrawablesRelative(null, null, null, null);
+			tv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 		}
 		
 		FrameLayout fl = (FrameLayout) findViewById(R.id.transitionLayout1);
