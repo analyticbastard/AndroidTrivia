@@ -39,6 +39,7 @@ import android.widget.TextView;
  */
 public class QuestionPanel extends Activity implements View.OnClickListener {
 	private final int TRANSITION_DELAY = 1500;
+	private final int TIMER_PERIOD = 500;
 	
 	public static final double SCREEN_IMAGE_PERCENTAGE = 0.35;
 
@@ -170,7 +171,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 	
 
 	/*
-	 * Update the timer to awnser the question
+	 * Update the timer to answer the question
 	 */
 	private class CustomTimerTask extends TimerTask {
 		private static final int TIME_MAX = GameManager.QUESTION_TIME;
@@ -182,6 +183,10 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		private int progress = 0;
 		
+		public int getProgress() {
+			return progress;
+		}
+
 		/* Task to run in the UI Task queue so that UI items can be changed
 		 * (they cannot from a non-UI thread such as the timer task).
 		 */
@@ -210,12 +215,13 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			}
 		}
 		
-		public CustomTimerTask (Timer _timer, QuestionPanel _qp) {
+		public CustomTimerTask (Timer _timer, QuestionPanel _qp, int start) {
 			questionpanel = _qp;
 			timer = _timer;
 			progressbar = (ProgressBar) findViewById(R.id.progressBar1);
 			progressbar.setMax(TIME_MAX);
-			progressbar.setProgress(0);
+			progress = start;
+			progressbar.setProgress(start);
 			uitask = new UITimerTask(GameManager.getManager().getQuestion());
 		}
 
@@ -398,8 +404,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		// Start timer here to timeout and to update progress bar
 		timer = new Timer();
-		ct = new CustomTimerTask(timer, this);
-		timer.schedule(ct, 0, 500);
+		ct = new CustomTimerTask(timer, this, 0);
+		timer.schedule(ct, 0, TIMER_PERIOD);
 	}
 	
 	public void showScore() {		
@@ -461,6 +467,22 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		}
 		
 		showQuestion();
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		
+		timer.cancel();
+	}
+	
+	@Override
+	public void onRestart() {
+		super.onRestart();
+		
+		timer = new Timer();
+		ct = new CustomTimerTask(timer, this, ct.getProgress());
+		timer.schedule(ct, 0, TIMER_PERIOD);
 	}
 
 	
