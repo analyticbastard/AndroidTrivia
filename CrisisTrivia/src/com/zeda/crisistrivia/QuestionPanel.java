@@ -45,7 +45,13 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 
 	ImageView iv;
 	Timer timer = null;
-	CustomTimerTask ct = null;	
+	CustomTimerTask ct = null;
+	
+	Object mutex = new Object();
+	boolean returnFromActivity = true;
+	
+	private Timer timerTransition;
+	
 	final Animation animation = new AlphaAnimation(1, 0); 
 	// Change alpha from fully visible to invisible
 
@@ -78,6 +84,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		@Override
 		public void onClick(View arg0) {
+			
 			b.setOnClickListener(null);
 			bo1.setOnClickListener(null);
 			bo2.setOnClickListener(null);
@@ -117,6 +124,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			// Increase answers counter
 			GameManager.getManager().advanceQuestionsAnswered();
 		}
+		
 	}
 	
 	/*
@@ -130,7 +138,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		
 		@Override
 		public void onClick(View arg0) {
-			super.onClick(arg0);			
+			super.onClick(arg0);
 			
 			// Update score
 			int timeLeft = CustomTimerTask.TIME_MAX - questionpanel.ct.progress;
@@ -182,10 +190,6 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		private UITimerTask uitask = null;
 		
 		private int progress = 0;
-		
-		public int getProgress() {
-			return progress;
-		}
 
 		/* Task to run in the UI Task queue so that UI items can be changed
 		 * (they cannot from a non-UI thread such as the timer task).
@@ -406,6 +410,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 		timer = new Timer();
 		ct = new CustomTimerTask(timer, this, 0);
 		timer.schedule(ct, 0, TIMER_PERIOD);
+		
 	}
 	
 	public void showScore() {		
@@ -422,8 +427,8 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			return;
 		}
 		
-		timer = new Timer();
-		timer.schedule(new TransitionTask(this), TRANSITION_DELAY);
+		timerTransition = new Timer();
+		timerTransition.schedule(new TransitionTask(this), TRANSITION_DELAY);
 	}
 	
 	@Override
@@ -438,6 +443,7 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 			return;
 		}
 		
+		setReturnFromActivity(true);
 		showQuestion();
 	}
 	
@@ -480,9 +486,15 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 	public void onRestart() {
 		super.onRestart();
 		
-		timer = new Timer();
-		ct = new CustomTimerTask(timer, this, ct.getProgress());
-		timer.schedule(ct, 0, TIMER_PERIOD);
+		if (!getReturnFromActivity()) {
+			// If coming back from activity it creates 2 timers (here and in getQuestion)
+			timer = new Timer();
+			ct = new CustomTimerTask(timer, this, 0);
+			timer.schedule(ct, 0, TIMER_PERIOD);
+		}
+		
+		// We are safe now with respect to timers, restore against external interrupts
+		setReturnFromActivity(false);
 	}
 
 	
@@ -527,9 +539,18 @@ public class QuestionPanel extends Activity implements View.OnClickListener {
 	public Timer getTimer() {
 		return timer;
 	}
-
-	public void setTimer(Timer timer) {
-		this.timer = timer;
+	
+	private void setReturnFromActivity(boolean r) {
+		synchronized(mutex) {
+			returnFromActivity = r;
+		}
 	}
+	
+	private boolean getReturnFromActivity() {
+		synchronized(mutex) {
+			return returnFromActivity;
+		}
+	}
+	
 
 }
