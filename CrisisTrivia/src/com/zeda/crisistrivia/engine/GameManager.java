@@ -37,7 +37,7 @@ public class GameManager {
 	public static final int LEVEL3 = 3;
 	public static final int LEVEL_FLASH = 9999;
 	
-	public static final int QUESTION_TIME = 25;
+	public static final int QUESTION_TIME = 30;
 	
 	
 	private Vector<Question> questions;
